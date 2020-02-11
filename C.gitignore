@@ -1,0 +1,11 @@
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+readTar1
+
+# Tar Format file
+tar.format
