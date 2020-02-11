@@ -53,6 +53,7 @@ typedef struct __attribute__((__packed__)) posix_header
  
 
 char buff[512];
+int blk_count= 0;
 
 posix_header *  hdr = NULL; 
 
@@ -60,11 +61,28 @@ int bb_getattr(const char *path, struct stat *statbuf)
  {
      int retstat = 0;           //return status
      char fpath[PATH_MAX];
+     int mod;
      
+     mod = (int) strtol(hdr -> mode, NULL, 8);
+     // if a regfile type
+     if ((hdr -> typeflag == REGTYPE) || (hdr -> typeflag == AREGTYPE) ){
+         mod = mod | (1 << 15);
+     }
+     //if a directory type
+     if (hdr -> typeflag == DIRTYPE)
+         mod = mod | (1 << 14);
+    //debugging
+     printf("hdr -> mode = %o, typeflag = %ld \n", mod, strtol(&hdr ->typeflag, NULL, 0));
 
-     printf("hdr -> mode = %ld, typeflag = %ld \n", strtol(hdr -> mode, NULL, 10 ), strtol(&hdr ->typeflag, NULL, 0));
-     
-     //statbuf -> st_mode =  
+     statbuf -> st_mode =   mod;
+     statbuf -> st_dev = 0;
+     statbuf -> st_ino = 0;
+     statbuf -> st_nlink = 0;
+     statbuf -> st_uid =  strtol(hdr -> uid, NULL, 8);
+     statbuf -> st_gid =  strtol(hdr -> gid, NULL, 8);
+     statbuf -> st_size = strtol(hdr -> size, NULL ,8);
+     statbuf -> st_blksize = 512;
+     statbuf -> st_blocks = blk_count;
 
      /*retstat = log_syscall("lstat", lstat(fpath, statbuf), 0);
 
@@ -112,9 +130,6 @@ struct fuse_operations bb_oper = {
 /////////////////////////////////////////////////////////////////
 
 
-
-
-
 int main(int argc, char * argv[]){
     int fd;
     int t = 0;
@@ -123,7 +138,6 @@ int main(int argc, char * argv[]){
     
     
     char * dflt_file = "x.tar";
-    printf("size of struct= %lu\n", sizeof(*hdr));   
     
 
     hdr = (struct posix_header *)malloc(sizeof(*hdr));
@@ -139,7 +153,8 @@ int main(int argc, char * argv[]){
         handle_error("Open Tar file!");
     }
     
-    //reading tar
+    //Reading tar
+    
     //t = read(fd, hdr, sizeof(*hdr) );
     /*
     t = read(fd, hdr, sizeof(*hdr));
@@ -154,17 +169,22 @@ int main(int argc, char * argv[]){
     while (1){
            
         t = read(fd, hdr, sizeof(*hdr));
+        blk_count++;
+        
         size = strtol(hdr -> size, NULL, 8);
         typeflag = strtol(& hdr -> typeflag, NULL, 0);
-        printf("Name file = %s\n", hdr-> name);
-        printf("uid, gid = %ld, %ld, size = %ld, typeflag = %ld\n", strtol(hdr -> uid, NULL, 8 ), strtol(hdr -> gid, NULL, 8), size, typeflag);
+        if ((size == 0) && (typeflag == 0) ) //stop reading more blocks cond.
+            break;
+       
+        printf("\n----------------------\nName file = %s\n", hdr-> name);
+        printf("uid, gid = %ld, %ld, size = %ld, typeflag = %ld\n",
+                strtol(hdr -> uid, NULL, 8 ), strtol(hdr -> gid, NULL, 8),
+                size, typeflag);
         
         struct stat sb;
         bb_getattr(NULL, &sb);
             
 
-        if ((size == 0) && (typeflag == 0) )
-            break;
         if ((size != 0) && ((hdr -> typeflag == REGTYPE) || 
                 (hdr -> typeflag == AREGTYPE))){
             printf("<---- %ld bytes file start here\n", size);
@@ -172,8 +192,6 @@ int main(int argc, char * argv[]){
             printf("%s", buff);
             printf("<------------ EOF !!!!!!!!\n");
         }
-
     }
-
     return 0;
 }
