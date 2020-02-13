@@ -34,11 +34,11 @@
     char mtime[12];               /* 136 Modify time (in octal ascii)*/
     char chksum[8];               /* 148 Header checksum (in octal ascii)*/
     char typeflag;                /* 156 Link flag*/
-    char linkname[100];           /* 157 Linkname ('\0' terminated, 99           maxmum     length)*/
+    char linkname[100];           /* 157 Linkname ('\0' terminated, 99     maxmum     length)*/
     char magic[6];                /* 257 Magic ("ustar  \0")*/
     char version[2];              /* 263 */
     char uname[32];               /* 265 User name*/
-    char gname[32];               /* 297 Group name ('\0' terminated, 31         maxmum   length)*/
+    char gname[32];               /* 297 Group name ('\0' terminated, 31    maxmum   length)*/
     char devmajor[8];             /* 329 Major device ID (in octal ascii)*/
     char devminor[8];             /* 337 Minor device ID (in octal ascii)*/
     char prefix[155+12];           //to  make total of 512
@@ -46,6 +46,13 @@
     //                               500 
     }  posix_header ;
 
+typedef struct Dir_list {
+    char * path;                    // absolute path name
+    int block;                      // block number
+    int type;                           // file or dir
+    struct Dir_list * parent ;          // parent dir node
+    char * pth [];                  // path of dir and files of all children
+} dir_lst;
 
 //////////////////////////////////////////
 

@@ -160,9 +160,8 @@ int main(int argc, char * argv[]){
     */
     while (1){
            
-        t = read(fd, hdr, sizeof(*hdr)); num++;
-        printf("BLOCK NUMBER %d !!!!!!!!!!!!!!\n", num);
-        blk_count++;
+        t = read(fd, hdr, sizeof(*hdr)); // num++;           //reading here
+        //printf("BLOCK NUMBER %d !!!!!!!!!!!!!!\n", num);
         
         size = strtol(hdr -> size, NULL, 8);
         typeflag = strtol(& hdr -> typeflag, NULL, 0);
@@ -192,7 +191,7 @@ int main(int argc, char * argv[]){
         if ((size != 0) && ((hdr -> typeflag == REGTYPE) || 
                 (hdr -> typeflag == AREGTYPE))){
             printf("<---- %ld bytes file start here\n", size);
-            t = read(fd, buff, 512);
+            t = read(fd, buff, 512);                            // reading here
             printf("%s", buff);
             printf("<------------ EOF !!!!!!!!\n");
         }

@@ -44,15 +44,6 @@ int get_blk_count(int fd  ){
                 printf("Next block was not empty !!!!!!!!!!!\n");
             }
         }
-        /*
-        if ((mode == 0)&&
-                (size == 0) && (typeflag == 0)){
-               t = read(fd, hdr1, sizeof(*hdr1));
-               if (( mode == 0)
-                   &&(size == 0) && (typeflag == 0)) {
-                    break;
-           }
-           }*/
     }
     // End condition
     t = lseek(fd, 0, SEEK_SET);
