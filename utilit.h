@@ -66,5 +66,6 @@ int get_blk_count(int fd );
 
 tr_blk * get_path_table(FILE * fd ); 
 
+int isZero(posix_header * hdr);
 
 #endif

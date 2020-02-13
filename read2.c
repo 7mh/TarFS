@@ -59,6 +59,30 @@ int bb_getattr(const char *path, struct stat *statbuf)
      return retstat;
  }
 
+/** Function to add an entry in a readdir() operation
+ *
+ * The *off* parameter can be any non-zero value that enables the
+ * filesystem to identify the current point in the directory
+ * stream. It does not need to be the actual physical position. A
+ * value of zero is reserved to indicate that seeking in directories
+ * is not supported.
+ * 
+ * @param buf the buffer passed to the readdir() operation
+ * @param name the file name of the directory entry
+ * @param stat file attributes, can be NULL
+ * @param off offset of the next entry or zero
+ * @param flags fill flags
+ * @return 1 if buffer is full, zero otherwise
+ */
+/*
+typedef int bb_fuse_fill_dir_t (void *buf, const char *name,
+                                const struct stat *stbuf, off_t off,
+                                enum fuse_fill_dir_flags flags){
+    
+}*/
+
+
+
 
 /*        /////////////         fuse_operations   */
 
@@ -96,6 +120,7 @@ struct fuse_operations bb_oper = {
 int main(int argc, char * argv[]){
     int fd;
     int t = 0;
+    int num =0;                     //random counter
     long int size, mode ;
     long int typeflag;
     
@@ -135,20 +160,25 @@ int main(int argc, char * argv[]){
     */
     while (1){
            
-        t = read(fd, hdr, sizeof(*hdr));
+        t = read(fd, hdr, sizeof(*hdr)); num++;
+        printf("BLOCK NUMBER %d !!!!!!!!!!!!!!\n", num);
         blk_count++;
         
         size = strtol(hdr -> size, NULL, 8);
         typeflag = strtol(& hdr -> typeflag, NULL, 0);
         mode = strtol (hdr -> mode , NULL, 0);
         //stop reading more blocks cond.
-        if ((mode == 0)&&(hdr -> uid == 0)&&(hdr ->gid == 0)
-                &&(size == 0) && (typeflag == 0)){         {
-            t = read(fd, hdr, sizeof(*hdr));
-            if (( mode == 0)&&(hdr -> uid == 0)&&(hdr ->gid == 0)
-                &&(size == 0) && (typeflag == 0))         
-                 break;
-        }
+           if (isZero(hdr)){
+               t = read(fd, hdr, sizeof(*hdr));
+               if (isZero(hdr)){
+                   break;
+               }
+               else {
+                   printf("Next block was not empty !!!!!!!!!!!\n");
+               }
+           }
+        // End condition
+        
         printf("--------------STARTS FROM HERE-----------------------");      
         printf("\n----------------------\nName file = %s\n", hdr-> name);
         printf("uid, gid = %ld, %ld, size = %ld, typeflag = %ld\n",
