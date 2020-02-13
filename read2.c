@@ -5,55 +5,18 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include "utilit.h"
 
 #define handle_error(msg)\
     do {perror(msg); exit(EXIT_FAILURE);} while(0)
 #define PATH_MAX 255
 
 /////////////////////////////////////////////////////////////////
-/* Values used in typeflag field.  */
-#define REGTYPE  '0'            /* regular file */
-#define AREGTYPE '\0'           /* regular file */
-#define LNKTYPE  '1'            /* link */
-#define SYMTYPE  '2'            /* reserved */
-#define CHRTYPE  '3'            /* character special */
-#define BLKTYPE  '4'            /* block special */
-#define DIRTYPE  '5'            /* directory */
-#define FIFOTYPE '6'            /* FIFO special */
-#define CONTTYPE '7'            /* reserved */
-
-#define XHDTYPE  'x'            /* Extended header referring to the
-                                   next file in the archive */
-#define XGLTYPE  'g'            /* Global extended header */
-/* tar Header Block, from POSIX 1003.1-1990.  */
-
-/* POSIX header BEGINS  */
-
-typedef struct __attribute__((__packed__)) posix_header
- {                              /* byte offset */
-   char name[100];               /*   0 File name */
-   char mode[8];                 /* 100 File mode (in octal ascii)*/
-   char uid[8];                  /* 108 User ID (in octal ascii) */
-   char gid[8];                  /* 116 Group ID (in octal ascii)*/
-   char size[12];                /* 124 File size (s) (in octal ascii)*/
-   char mtime[12];               /* 136 Modify time (in octal ascii)*/
-   char chksum[8];               /* 148 Header checksum (in octal ascii)*/
-   char typeflag;                /* 156 Link flag*/
-   char linkname[100];           /* 157 Linkname ('\0' terminated, 99 maxmum     length)*/
-   char magic[6];                /* 257 Magic ("ustar  \0")*/
-   char version[2];              /* 263 */
-   char uname[32];               /* 265 User name*/
-   char gname[32];               /* 297 Group name ('\0' terminated, 31 maxmum   length)*/
-   char devmajor[8];             /* 329 Major device ID (in octal ascii)*/
-   char devminor[8];             /* 337 Minor device ID (in octal ascii)*/
-   char prefix[155+12];           //to  make total of 512
-   //char prefix[155];              345 
-   //                               500 
-   }  posix_header ;
  
 
 char buff[512];
 int blk_count= 0;
+
 
 posix_header *  hdr = NULL; 
 
@@ -133,7 +96,7 @@ struct fuse_operations bb_oper = {
 int main(int argc, char * argv[]){
     int fd;
     int t = 0;
-    long int size ;
+    long int size, mode ;
     long int typeflag;
     
     
@@ -152,6 +115,10 @@ int main(int argc, char * argv[]){
     if (fd == -1){
         handle_error("Open Tar file!");
     }
+    //counting blocks
+    printf("Block Count is = %d !!!!!!!\n", blk_count);
+    blk_count = get_blk_count(fd);
+    printf("Block Count is = %d !!!!!!!\n", blk_count);
     
     //Reading tar
     
@@ -173,9 +140,16 @@ int main(int argc, char * argv[]){
         
         size = strtol(hdr -> size, NULL, 8);
         typeflag = strtol(& hdr -> typeflag, NULL, 0);
-        if ((size == 0) && (typeflag == 0) ) //stop reading more blocks cond.
-            break;
-       
+        mode = strtol (hdr -> mode , NULL, 0);
+        //stop reading more blocks cond.
+        if ((mode == 0)&&(hdr -> uid == 0)&&(hdr ->gid == 0)
+                &&(size == 0) && (typeflag == 0)){         {
+            t = read(fd, hdr, sizeof(*hdr));
+            if (( mode == 0)&&(hdr -> uid == 0)&&(hdr ->gid == 0)
+                &&(size == 0) && (typeflag == 0))         
+                 break;
+        }
+        printf("--------------STARTS FROM HERE-----------------------");      
         printf("\n----------------------\nName file = %s\n", hdr-> name);
         printf("uid, gid = %ld, %ld, size = %ld, typeflag = %ld\n",
                 strtol(hdr -> uid, NULL, 8 ), strtol(hdr -> gid, NULL, 8),

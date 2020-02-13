@@ -1,6 +1,7 @@
 CC=gcc
 CFLAGS=-D_FILE_OFFSET_BITS=64
 
-all: 
-	$(CC) -o readTar1 $(CFLAGS) read2.c
+all:
+	gcc -D_FILE_OFFSET_BITS=64 read2.c utilit.c utilit.h 
+#	$(CC) -o readTar1 $(CFLAGS) read2.c
 
