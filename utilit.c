@@ -43,7 +43,7 @@ List * create(char * path, int block, int type, List * head  ){
 void print_list(List * head   ){
     printf("printing Link list !!!!!!!!!!!!!!!!!!!!\n");
     printf("print head %s\n", head -> path);
-    while(!head){
+    while(head){
         printf("%s\n", head -> path);
         head = head -> next;
     }
@@ -71,6 +71,7 @@ int get_blk_count(int fd  ){
         //printf("Name = %s\n", hdr1 -> name);
         //Filling Linked list
         head = create(hdr1 -> name, count, ((typeflag != 0)?1:0),head);
+        //printf("Testing !!!!! %s\n", head -> path);
         skip =  (int) ceilf((float) (size /512.0)) ;
         skip = skip * 512;
         //printf("Skipping %d bytes for file data size %d \n ", skip, size);
