@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <string.h>
+#include <math.h>
 
 //////////////////////////////////////////
 /* Values used in typeflag field.  */
@@ -22,7 +23,8 @@
                                     next file in the archive */
  #define XGLTYPE  'g'            /* Global extended header */
  /* tar Header Block, from POSIX 1003.1-1990.  */
- 
+#define BLOCK_SIZE 512 
+
  /* POSIX header BEGINS  */
  
  typedef struct __attribute__((__packed__)) posix_header

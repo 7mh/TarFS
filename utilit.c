@@ -28,18 +28,24 @@ List * create(char * path, int block, int type, List * head  ){
     
     if (head == NULL){
         curr -> next = NULL;
+        printf("First Block here !!!!!!!!\n");
+        printf("%s\n", curr -> path);
         return curr;
     }
     else{
         curr -> next = head;
+        printf("Next block\n");
+        printf("%s\n", curr -> path);
         return curr;
     }
 }
 
 void print_list(List * head   ){
     printf("printing Link list !!!!!!!!!!!!!!!!!!!!\n");
+    printf("print head %s\n", head -> path);
     while(!head){
         printf("%s\n", head -> path);
+        head = head -> next;
     }
 }
 
@@ -49,8 +55,11 @@ int get_blk_count(int fd  ){
     int size, mode;
     int count = 0;
     int typeflag;
+    int skip;
     posix_header * hdr1;
     hdr1 = (posix_header *) malloc(sizeof(*hdr1));
+    List * head;
+
     while (1){
         t = read(fd, hdr1, sizeof(*hdr1));  count++;
         size = strtol(hdr1 -> size, NULL, 8);
@@ -59,7 +68,16 @@ int get_blk_count(int fd  ){
         printf("bytes readed %d, size = %d, type = %d\n",t, 
                 size, typeflag);
         
-        printf("Name = %s\n", hdr1 -> name);
+        //printf("Name = %s\n", hdr1 -> name);
+        //Filling Linked list
+        head = create(hdr1 -> name, count, ((typeflag != 0)?1:0),head);
+        skip =  (int) ceilf((float) (size /512.0)) ;
+        skip = skip * 512;
+        //printf("Skipping %d bytes for file data size %d \n ", skip, size);
+        if ((size > 0) ||(typeflag <= 0)){
+            lseek(fd,  skip,SEEK_CUR);
+        }
+
         //stop reading more blocks cond.
         if (isZero(hdr1)){
             t = read(fd, hdr1, sizeof(*hdr1));
@@ -71,6 +89,8 @@ int get_blk_count(int fd  ){
             }
         }
     }
+    // print list
+    print_list(head);
     // End condition
     t = lseek(fd, 0, SEEK_SET);
     printf("Total blocks = %d\n", count);
