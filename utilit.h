@@ -58,6 +58,8 @@ typedef struct Dir_list {
     //char * pth [];                  // path of dir and files of all children
 }List;
 
+List * head;
+
 //////////////////////////////////////////
 
 //return tree struct
@@ -79,4 +81,5 @@ tr_blk * get_path_table(FILE * fd );
 
 int isZero(posix_header * hdr);
 
+List * path2blocknum(char  * req);
 #endif

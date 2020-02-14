@@ -58,7 +58,7 @@ int get_blk_count(int fd  ){
     int skip;
     posix_header * hdr1;
     hdr1 = (posix_header *) malloc(sizeof(*hdr1));
-    List * head;
+    //List * head;  // making first header a global var
 
     while (1){
         t = read(fd, hdr1, sizeof(*hdr1));  count++;
@@ -72,8 +72,8 @@ int get_blk_count(int fd  ){
         //Filling Linked list
         head = create(hdr1 -> name, count, ((typeflag != 0)?1:0),head);
         //printf("Testing !!!!! %s\n", head -> path);
-        skip =  (int) ceilf((float) (size /512.0)) ;
-        skip = skip * 512;
+        skip =  (int) ceilf((float) (size /(float) BLOCK_SIZE)) * BLOCK_SIZE ;
+        //skip = skip * 512;
         //printf("Skipping %d bytes for file data size %d \n ", skip, size);
         if ((size > 0) ||(typeflag <= 0)){
             lseek(fd,  skip,SEEK_CUR);
@@ -90,13 +90,32 @@ int get_blk_count(int fd  ){
             }
         }
     }
+
     // print list
-    print_list(head);
+    //print_list(head);     // this works
     // End condition
     t = lseek(fd, 0, SEEK_SET);
     printf("Total blocks = %d\n", count);
     return count;
 }
+
+// for directory respective block is returned 
+// But for files the Next block is returned Since File name and contents are
+// stored in separate blocks
+List * path2blocknum(char  * req){
+    List * curr = head;
+    while(curr){
+        if (strcmp(req, curr -> path) == 0 ){
+            return curr;
+        }
+        else{
+            curr = curr -> next;
+        }
+    }
+    perror("Path Not found in Tar File - path2blocknum\n");
+}
+
+
 
 
 //tr_blk * get_path_table(FILE * fd );
