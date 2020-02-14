@@ -196,10 +196,12 @@ int main(int argc, char * argv[]){
             printf("<------------ EOF !!!!!!!!\n");
         }
     }
+    /* Testing purposes 
     List * tmp;
     char * t1 = "test/subdir/";
     tmp = path2blocknum(t1);
     printf("Returned path %s\n", tmp -> path );
+    */
     close(fd);
     return 0;
 }
