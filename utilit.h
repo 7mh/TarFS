@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <string.h>
 
 //////////////////////////////////////////
 /* Values used in typeflag field.  */
@@ -50,16 +51,17 @@ typedef struct Dir_list {
     char * path;                    // absolute path name
     int block;                      // block number
     int type;                           // file or dir
-    struct Dir_list * parent ;          // parent dir node
-    char * pth [];                  // path of dir and files of all children
-} dir_lst;
+    struct Dir_list * next;             //next block
+    //struct Dir_list * parent ;          // parent dir node
+    //char * pth [];                  // path of dir and files of all children
+}List;
 
 //////////////////////////////////////////
 
 //return tree struct
 
 typedef struct directory {
-    char path [255];
+    char path [150];
     int block_ind;
     struct directory * next;
 } tr_blk1; 

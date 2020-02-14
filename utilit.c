@@ -17,6 +17,32 @@ int isZero(posix_header * hdr){
         return 0;
 }
 
+List * create(char * path, int block, int type, List * head  ){
+    
+    List * curr= (List *) malloc(sizeof(List));
+    
+    //max path length is 110 coz tar struct has len 100 extra 10 for debugging  
+    curr -> path =strndup( path,100 ); 
+    curr ->  block = block;  //block numbetr
+    curr -> type = type;    // 0 if file  and 1 if dir
+    
+    if (head == NULL){
+        curr -> next = NULL;
+        return curr;
+    }
+    else{
+        curr -> next = head;
+        return curr;
+    }
+}
+
+void print_list(List * head   ){
+    printf("printing Link list !!!!!!!!!!!!!!!!!!!!\n");
+    while(!head){
+        printf("%s\n", head -> path);
+    }
+}
+
 int get_blk_count(int fd  ){
 
     int t = 0;
@@ -49,8 +75,8 @@ int get_blk_count(int fd  ){
     t = lseek(fd, 0, SEEK_SET);
     printf("Total blocks = %d\n", count);
     return count;
-
 }
+
 
 //tr_blk * get_path_table(FILE * fd );
 
