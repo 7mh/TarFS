@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <string.h>
 #include <math.h>
+#include <sys/stat.h>      
+#include <time.h>
 
 //////////////////////////////////////////
 /* Values used in typeflag field.  */
@@ -24,6 +26,14 @@
  #define XGLTYPE  'g'            /* Global extended header */
  /* tar Header Block, from POSIX 1003.1-1990.  */
 #define BLOCK_SIZE 512 
+
+/*for bbfs functions*/
+#define PATH_MAX 255
+#define BB_DATA ((struct bb_state *) fuse_get_context()->private_data)
+
+
+struct stat tar_st;
+/*bbfs def ENDs here*/
 
  /* POSIX header BEGINS  */
  
@@ -51,8 +61,11 @@
 
 typedef struct Dir_list {
     char * path;                    // absolute path name
-    int block;                      // block number
+    int block;                      // Tar block number
     int type;                           // file or dir
+    int mode;
+    int size;
+    int mtime;
     struct Dir_list * next;             //next block
     //struct Dir_list * parent ;          // parent dir node
     //char * pth [];                  // path of dir and files of all children
@@ -62,18 +75,25 @@ List * head;
 
 //////////////////////////////////////////
 
+///////////////////////////////////
+// for bbfs functions
+char cwd [PATH_MAX];
+void absolutepath(char * root_folder);
+//////////////////////////////////
+
 //return tree struct
 
-typedef struct directory {
+typedef struct directory {  //unused
     char path [150];
     int block_ind;
     struct directory * next;
 } tr_blk1; 
 
-typedef struct directory_easy{
+typedef struct directory_easy{  //unused
     char path[255];
     int block_ind;
 } tr_blk;
+
 
 int get_blk_count(int fd );
 
@@ -82,4 +102,6 @@ tr_blk * get_path_table(FILE * fd );
 int isZero(posix_header * hdr);
 
 List * path2blocknum(char  * req);
+List * create(char * path, int blockno, int type, int mode, int size,
+                 int mtime,  List * head  );
 #endif

@@ -1,4 +1,29 @@
+ /*
+   Big Brother File System
+   Copyright (C) 2012 Joseph J. Pfeiffer, Jr., Ph.D. <pfeiffer@cs.nmsu.edu>
+ 
+   This program can be distributed under the terms of the GNU GPLv3.
+   See the file COPYING.
+ 
+   This code is derived from function prototypes found /usr/include/fuse/fuse.h
+   Copyright (C) 2001-2007  Miklos Szeredi <miklos@szeredi.hu>
+   His code is licensed under the LGPLv2.
+   A copy of that code is included in the file fuse.h
+   
+   The point of this FUSE filesystem is to provide an introduction to
+   FUSE.  It was my first FUSE filesystem as I got to know the
+   software; hopefully, the comments in this code will help people who
+   follow later to get a gentler introduction.
+ 
+   This might be called a no-op filesystem:  it doesn't impose
+   filesystem semantics on top of any other existing structure.  It
+   simply reports the requests that come in, and passes them to an
+   underlying filesystem.  The information is saved in a logfile named
+   bbfs.log, in the directory from which you run bbfs.
+ */
+
 #include "utilit.h"
+
 int isZero(posix_header * hdr){
     int count = 0;
     char * tmp = (char *) hdr;
@@ -17,13 +42,14 @@ int isZero(posix_header * hdr){
         return 0;
 }
 
-List * create(char * path, int block, int type, List * head  ){
+List * create(char * path, int blockno, int type, int mode, int size,
+                int mtime,  List * head  ){
     
     List * curr= (List *) malloc(sizeof(List));
     
     //max path length is 110 coz tar struct has len 100 extra 10 for debugging  
     curr -> path =strndup( path,100 ); 
-    curr ->  block = block;  //block numbetr
+    curr ->  block = blockno;  //block numbetr
     curr -> type = type;    // 0 if file  and 1 if dir
     
     if (head == NULL){
@@ -53,7 +79,7 @@ int get_blk_count(int fd  ){
 
     int t = 0;
     int size, mode;
-    int count = 0;
+    int count = 0;      // this is blockno at Llist
     int typeflag;
     int skip;
     posix_header * hdr1;
@@ -65,13 +91,24 @@ int get_blk_count(int fd  ){
         size = strtol(hdr1 -> size, NULL, 8);
         typeflag =  strtol(&hdr1 -> typeflag, NULL, 0);
         mode = strtol (hdr1 -> mode , NULL, 0);
-        printf("bytes readed %d, size = %d, type = %d\n",t, 
-                size, typeflag);
+         // if a regfile type
+        if ((hdr1 -> typeflag == REGTYPE) || (hdr1 -> typeflag == AREGTYPE) ){
+            mode = mode | (1 << 15);
+        }
+        //if a directory type
+        if (hdr1 -> typeflag == DIRTYPE)
+            mode = mode | (1 << 14);
+
+        printf("bytes readed %d, size = %d, type = %d,mode= %o\n"
+                ,t,size, typeflag, mode);
         
         //printf("Name = %s\n", hdr1 -> name);
-        //Filling Linked list
-        head = create(hdr1 -> name, count, ((typeflag != 0)?1:0),head);
+        //Filling Linked list last arg is Llist head
+        head = create(hdr1 -> name, count, ((typeflag != 0)?1:0),mode, 
+                size, strtol(hdr1 -> mtime,NULL,8)  ,head);
         //printf("Testing !!!!! %s\n", head -> path);
+
+        //SKIPPING data blocks of data files
         skip =  (int) ceilf((float) (size /(float) BLOCK_SIZE)) * BLOCK_SIZE ;
         //skip = skip * 512;
         //printf("Skipping %d bytes for file data size %d \n ", skip, size);
@@ -92,7 +129,12 @@ int get_blk_count(int fd  ){
     }
 
     // print list
-    //print_list(head);     // this works
+    print_list(head);     // this works
+    printf("DOne printing \n");
+    
+
+    //absolutepath("/ROOT_DIR");
+    //printf("Absolute path = %s\n", cwd);
     // End condition
     t = lseek(fd, 0, SEEK_SET);
     printf("Total blocks = %d\n", count);
@@ -114,8 +156,34 @@ List * path2blocknum(char  * req){
     }
     perror("Path Not found in Tar File - path2blocknum\n");
 }
+//This function writes into global variable = (cwd + root_folder)
+void absolutepath(char * root_folder){
+   char * tmp;
+   strcpy (tmp ,cwd);
+    if (getcwd(cwd, sizeof(cwd)) != NULL) {
+       //printf("Current working dir (absolutepath funct): %s\n", cwd);
+       strcpy(cwd , strcat(cwd, root_folder));
+       //printf("Combined path is = %s\n", cwd);
+   } else {
+       perror("getcwd() error");
+   }
+}
 
 
+////////////////////////////////////////////////////////////////////////
+/* from bbfs */
+/*static void bb_fullpath(char fpath[PATH_MAX], const char *path)
+ {
+     absolutepath()
+     strcpy(fpath, BB_DATA->rootdir);
+     strncat(fpath, path, PATH_MAX); // ridiculously long paths will
+                     // break here
+ 
+     //log_msg("    bb_fullpath:  rootdir = \"%s\", path = \"%s\", fpath = \"%s\"\n",
+     //    BB_DATA->rootdir, path, fpath);
+ }*/
+ 
+////////////////////////////////////////////////////////////////////////
 
 
 //tr_blk * get_path_table(FILE * fd );

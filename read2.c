@@ -1,11 +1,20 @@
+#define FUSE_USE_VERSION 30
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <fuse.h>
-#include <sys/types.h>
-#include <sys/stat.h>
+#include <fuse3/fuse.h>
 #include <fcntl.h>
+#include <string.h>
 #include "utilit.h"
+
+///////////////////////////////////   defs  for bbfs
+#include <dirent.h>
+#include <errno.h>
+
+//#include "log.h"
+#include "config.h"
+//////////////////////////////////
+
 
 #define handle_error(msg)\
     do {perror(msg); exit(EXIT_FAILURE);} while(0)
@@ -16,16 +25,37 @@
 
 char buff[512];
 int blk_count= 0;
+struct bb_state{
+     FILE * logfile;
+     char * rootdir;
+ };
 
 
 posix_header *  hdr = NULL; 
+static int tar_getattr(const char *path, struct stat *stbuf,
+                struct fuse_file_info *fi) {
 
-int bb_getattr(const char *path, struct stat *statbuf)
- {
      int retstat = 0;           //return status
      char fpath[PATH_MAX];
      int mod;
+     //HANDELING >  when char * path = "/"  
+     char * root = "/";
+     printf("testing !!!!!!!!!!!!!!!!!\n");
+     if (strcmp(root, path) == 0){
+         stbuf = &tar_st;
+         printf("Returned RoOt stat !!! \n");
+         return retstat;
+     }
+     //END
+    
+     //searching path into linked list and filling struct stat from Llist
+     List * tmp;
+     char * tst = "/test/subdir/data";
+     printf("Searching Llist path: %s \n", (tst+1));
+     tmp = path2blocknum(tst+1);
+     printf(" Found path name: %s\n", tmp -> path);
      
+     /* filling up stat struct with global hdr variable
      mod = (int) strtol(hdr -> mode, NULL, 8);
      // if a regfile type
      if ((hdr -> typeflag == REGTYPE) || (hdr -> typeflag == AREGTYPE) ){
@@ -37,19 +67,22 @@ int bb_getattr(const char *path, struct stat *statbuf)
     //debugging
      printf("hdr -> mode = %o, typeflag = %ld \n", mod, strtol(&hdr ->typeflag, NULL, 0));
 
-     statbuf -> st_mode =   mod;
-     statbuf -> st_dev = 0;
-     statbuf -> st_ino = 0;
-     statbuf -> st_nlink = 0;
-     statbuf -> st_uid =  strtol(hdr -> uid, NULL, 8);
-     statbuf -> st_gid =  strtol(hdr -> gid, NULL, 8);
-     statbuf -> st_size = strtol(hdr -> size, NULL ,8);
-     statbuf -> st_blksize = 512;
-     statbuf -> st_blocks = blk_count;
+     stbuf -> st_mode =   mod;
+     stbuf -> st_dev = 0;
+     stbuf -> st_ino = 0;
+     stbuf -> st_nlink = 0;
+     //stbuf -> st_uid =  strtol(hdr -> uid, NULL, 8);
+     stbuf -> st_uid = getuid();
+     //stbuf -> st_gid =  strtol(hdr -> gid, NULL, 8);
+     stbuf -> st_gid = getgid();
+     stbuf -> st_size = strtol(hdr -> size, NULL ,8);
+     stbuf -> st_blksize = 512;
+     stbuf -> st_blocks = blk_count;
+     */
 
-     /*retstat = log_syscall("lstat", lstat(fpath, statbuf), 0);
+     /*retstat = log_syscall("lstat", lstat(fpath, stbuf), 0);
 
-     log_stat(statbuf);
+     log_stat(stbuf);
      */
      
      if (retstat > 0){
@@ -58,6 +91,7 @@ int bb_getattr(const char *path, struct stat *statbuf)
         
      return retstat;
  }
+
 
 /** Function to add an entry in a readdir() operation
  *
@@ -74,22 +108,43 @@ int bb_getattr(const char *path, struct stat *statbuf)
  * @param flags fill flags
  * @return 1 if buffer is full, zero otherwise
  */
-/*
-typedef int bb_fuse_fill_dir_t (void *buf, const char *name,
-                                const struct stat *stbuf, off_t off,
-                                enum fuse_fill_dir_flags flags){
-    
-}*/
+int tar_open(const char *path, struct fuse_file_info *fi){
+    List * tmp;
+    char * path_t;
+    strcpy(path_t, path);
+    printf("At bb_open: path = %s\n", path_t);
+    tmp = path2blocknum(path_t);
+
+    return tmp -> block;
+}
+
+static void * tar_init(struct fuse_conn_info *conn,
+               struct fuse_config *cfg) {
 
 
+     //log_msg("\nbb_init()\n");
+ 
+     //log_conn(conn);
+     //log_fuse_context(fuse_get_context());
+     //(void) conn;
+     //cfg->use_ino = 1;
 
+     /*cfg->entry_timeout = 0;
+     cfg->attr_timeout = 0;
+     cfg->negative_timeout = 0;
+    */
+     return NULL;
+ 
+     //return BB_DATA;
+ }
 
 /*        /////////////         fuse_operations   */
 
 struct fuse_operations bb_oper = {
-   .getattr = bb_getattr,
+   .getattr = tar_getattr,
    // no .getdir -- that's deprecated
-   .getdir = NULL,
+   //.getdir = NULL,
+   //.access = bb_access,
    //.mkdir = bb_mkdir,
    //.unlink = bb_unlink,
    //.rmdir = bb_rmdir,
@@ -98,7 +153,7 @@ struct fuse_operations bb_oper = {
    //.link = bb_link,
    //.chmod = bb_chmod,
    //.chown = bb_chown,
-//   .open = bb_open,                       to be define
+   .open = tar_open,                       //to be define
 //   .read = bb_read,
 //   .write = bb_write,
    /** Just a placeholder, don't set */ // huh???
@@ -108,7 +163,7 @@ struct fuse_operations bb_oper = {
 //   .opendir = bb_opendir,                 to be defined
 //   .readdir = bb_readdir,
    //.releasedir = bb_releasedir,
-//   .init = bb_init,                       not necessary
+   .init = tar_init,                       //not necessary
    //.ftruncate = bb_ftruncate,
    //.fgetattr = bb_fgetattr        /same as getattr but takes fd as input arg
  };
@@ -121,47 +176,69 @@ int main(int argc, char * argv[]){
     int fd;
     int t = 0;
     int num =0;                     //random counter
+    int fuse_stat;
     long int size, mode ;
     long int typeflag;
+    struct bb_state * bb_data = (struct bb_state *) malloc(sizeof 
+                                                (struct bb_state));
     
     
-    char * dflt_file = "x.tar";
-    
+    char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/readtar/x.tar";
+    char * dflt_mount = "/mountdir";
+    printf("USAGE > ./a.out [mountdir]\n"); 
 
     hdr = (struct posix_header *)malloc(sizeof(*hdr));
 
     //open tar file
     if (argc < 2){
         fd = open(dflt_file, O_RDWR );
+        //absolutepath(dflt_mount);
+        bb_data -> rootdir = dflt_file;
+        //strdup(bb_data -> rootdir, dflt_file);
+        // getting tar file stat and saving it in global variable
+        if( stat(dflt_file, &tar_st )  != 0){
+            perror("Tar file stat error \n");
+        }
     }
     else{
         fd = open(argv[1], O_RDWR);
+        // To be added later
     }
     if (fd == -1){
         handle_error("Open Tar file!");
     }
+    
+    //preping  bb_state struct
+    //absolutepath();
+    //strcpy(bb_data -> rootdir, ); 
+
+    //argv[argc-2] = argv[argc-1];
+    //argv[argc-1] = NULL;
+    //argc--;
+    
+    
+
     //counting blocks
     printf("Block Count is = %d !!!!!!!\n", blk_count);
     blk_count = get_blk_count(fd);
     printf("Block Count is = %d !!!!!!!\n", blk_count);
     
+    // turn over control to fuse                    BLOCKED fuse_main !!!
+     fprintf(stderr, "about to call fuse_main\n");
+     //fuse_stat = fuse_main(argc, argv, &bb_oper, bb_data);
+     fprintf(stderr, "fuse_main returned %d\n", fuse_stat);
+    
+     struct stat sb;
+     tar_getattr("a", &sb, NULL);
+    
+    //tar_getattr()
+
     //Reading tar
-    
-    //t = read(fd, hdr, sizeof(*hdr) );
     /*
-    t = read(fd, hdr, sizeof(*hdr));
-    
-    printf("Name = %s\n", hdr-> name);
-    printf("uid, gid = %ld, %ld\n", strtol(hdr -> uid, NULL, 8 ), strtol(hdr -> gid, NULL, 8));
-    
-    t = read(fd, hdr, sizeof(*hdr));
-    printf("Name = %s\n", hdr-> name);
-    printf("uid, gid = %ld, %ld\n", strtol(hdr -> uid, NULL, 8 ), strtol(hdr -> gid, NULL, 8));
-    */
     while (1){
            
         t = read(fd, hdr, sizeof(*hdr)); // num++;           //reading here
-        //printf("BLOCK NUMBER %d !!!!!!!!!!!!!!\n", num);
+        printf("IN WHILE BLOCK NUMBER %d !!!!!!!!!!!!!!\n", num);
         
         size = strtol(hdr -> size, NULL, 8);
         typeflag = strtol(& hdr -> typeflag, NULL, 0);
@@ -185,7 +262,7 @@ int main(int argc, char * argv[]){
                 size, typeflag);
         
         struct stat sb;
-        bb_getattr(NULL, &sb);
+        tar_getattr("/", &sb, NULL);
             
 
         if ((size != 0) && ((hdr -> typeflag == REGTYPE) || 
@@ -195,13 +272,8 @@ int main(int argc, char * argv[]){
             printf("%s", buff);
             printf("<------------ EOF !!!!!!!!\n");
         }
-    }
-    /* Testing purposes 
-    List * tmp;
-    char * t1 = "test/subdir/";
-    tmp = path2blocknum(t1);
-    printf("Returned path %s\n", tmp -> path );
-    */
+    }*/
+    
     close(fd);
     return 0;
 }
