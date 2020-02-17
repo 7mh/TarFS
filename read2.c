@@ -41,7 +41,7 @@ static int tar_getattr(const char *path, struct stat *stbuf,
       int mod;
 
 
-      FILE * fdl = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/get_attr", "a+  ");
+      FILE * fdl = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/get_attr", "a+");
       fprintf(fdl, "os Path: %s\n", path);
 
       //HANDELING >  when char * path = "/"
@@ -141,7 +141,13 @@ static int tar_getattr(const char *path, struct stat *stbuf,
  
       return 0;
   }
- 
+
+/*
+static int tar_access(const char *path, int mask){
+   // (void) fi;
+    return 0; 
+} 
+*/
 
 
 
@@ -164,11 +170,47 @@ int tar_open(const char *path, struct fuse_file_info *fi){
     List * tmp;
     char * path_t;
     strcpy(path_t, path);
+    FILE * fdo = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/dir_open", "a+");
+    fprintf(fdo, "os Path: %s\n", path_t);
     printf("At bb_open: path = %s\n", path_t);
-    tmp = path2blocknum(path_t);
+    tmp = path2blocknum(path_t+1);
 
-    return tmp -> block;
+    fi -> fh =  tmp -> block;
+    fclose(fdo);
+    return 0;
 }
+
+static int tar_read(const char *path, char *buf, size_t size, off_t offset,
+        struct fuse_file_info *fi){
+    int fd;
+    int res;
+    List * tmp;
+    int blk ;
+    char * path_t;
+    strcpy(path_t, path);
+
+    FILE * fdw = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/dir_FILE", "a+");
+    fprintf(fdw, "os Path: %s, block: %lu\n", path, fi -> fh);
+    if (fi == NULL){
+        fd = fi -> fh;
+    }
+    else
+        fd = fi -> fh;
+    
+    tmp = path2blocknum(path_t +1);
+    blk = tmp -> block;
+    fprintf(fdw,"Mathc foud path: %s at blk: %d\n", tmp -> path, tmp -> block);
+    
+    res = pread()
+
+    memset(buf, 66, size);
+    //
+    
+    fclose(fdw);
+    return 0;
+}
+
+
 
 
 static int tar_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
@@ -253,7 +295,7 @@ struct fuse_operations bb_oper = {
    .getattr = tar_getattr,
    // no .getdir -- that's deprecated
    //.getdir = NULL,
-   //.access = bb_access,
+   //.access = tar_access,
    //.mkdir = bb_mkdir,
    //.unlink = bb_unlink,
    //.rmdir = bb_rmdir,
@@ -263,7 +305,7 @@ struct fuse_operations bb_oper = {
    //.chmod = bb_chmod,
    //.chown = bb_chown,
    .open = tar_open,                       //to be define
-//   .read = bb_read,
+   .read = tar_read,
 //   .write = bb_write,
    /** Just a placeholder, don't set */ // huh???
    //.statfs = bb_statfs,
@@ -292,9 +334,9 @@ int main(int argc, char * argv[]){
                                                 (struct bb_state));
     
     
-   // char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/x.tar";
+    char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/x.tar";
     
-    char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/bigdir.tar";
+    //char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/bigdir.tar";
     char * dflt_mount = "mountdir";
     printf("USAGE > ./a.out [mountdir]\n"); 
 
@@ -340,7 +382,7 @@ int main(int argc, char * argv[]){
     
     // turn over control to fuse                    BLOCKED fuse_main !!!
      fprintf(stderr, "about to call fuse_main\n");
-     fuse_stat = fuse_main(argc, argv, &bb_oper, bb_data);
+     //fuse_stat = fuse_main(argc, argv, &bb_oper, bb_data);
      umask(0);
      //fuse_main(argc, argv, &bb_oper, NULL);         //WORKING fuse command
 
@@ -351,8 +393,24 @@ int main(int argc, char * argv[]){
     //       static int tar_readdir(const char *path, void *buf, fuse_fill_dir_t filler,off_t offset, struct fuse_file_info *fi,
     //                 enum fuse_readdir_flags flags)
     // rdir("/test",t_buff );
+    
+     printf("TESTING \n");
+    
 
-    //tar_getattr()
+
+    struct fuse_file_info *fi;
+    //tar_open(const char *path, struct fuse_file_info *fi){
+    //tar_open("/test/b.py", fi);
+    //printf("block no: %lu\n", fi -> fh );
+
+    //static int tar_read(const char *path, char *buf, size_t size, off_t offset,
+    //    struct fuse_file_info *fi);
+    tar_read("/test/b.py", t_buff, 10, 0, fi );
+    printf("BUFFER : %s\n", t_buff);
+
+
+
+
 
     //Reading tar
     /*
