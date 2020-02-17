@@ -169,44 +169,85 @@ static int tar_access(const char *path, int mask){
 int tar_open(const char *path, struct fuse_file_info *fi){
     List * tmp;
     char * path_t;
-    strcpy(path_t, path);
+    path_t = strdup(path);
+    //strcpy(path_t, path);
     FILE * fdo = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/dir_open", "a+");
     fprintf(fdo, "os Path: %s\n", path_t);
     printf("At bb_open: path = %s\n", path_t);
     tmp = path2blocknum(path_t+1);
 
-    fi -> fh =  tmp -> block;
+    //fi -> fh =  tmp -> block;
     fclose(fdo);
     return 0;
 }
 
 static int tar_read(const char *path, char *buf, size_t size, off_t offset,
         struct fuse_file_info *fi){
-    int fd;
+    
+    char * path_t;
+    int left;
+    List * curr;
+    path_t = strdup(path);
+    
+    FILE * fdw = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/dir_FILE", "a+");
+    //printf("DIR_FILE IS OPENED\n");
+    fprintf(fdw, "tar_read call start--------------------\n");
+    fprintf(fdw, "os Path: %s \n", path);
+    
+    //if (fi == NULL)
+    //    return -1;
+    curr = path2blocknum(path_t+1);
+    fprintf(fdw,"Match found path: %s at block:%d , size %d\n",
+            curr -> path, curr -> block, curr -> size);
+    
+    lseek(fd_tar, 0, SEEK_SET);
+    lseek(fd_tar, ((curr -> block +1)*512), SEEK_SET);
+
+    read(fd_tar, buf, size);
+
+    /*int fd1 = 0;
+    int fd_t;
     int res;
     List * tmp;
     int blk ;
-    char * path_t;
-    strcpy(path_t, path);
-
+    char * path_tmp;
+    path_tmp = strdup(path);
+    
+    printf("AT READ FUNCTION !!!!!!!!!!!!!%s \n", path);
     FILE * fdw = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/dir_FILE", "a+");
-    fprintf(fdw, "os Path: %s, block: %lu\n", path, fi -> fh);
+    //printf("DIR_FILE IS OPENED\n");
+    fprintf(fdw, "os Path: %s, block:\n", path);
+    //printf("DIR_FILE IS written\n");
+    
     if (fi == NULL){
-        fd = fi -> fh;
+        fd1 = fi -> fh;
     }
     else
-        fd = fi -> fh;
+        fd1 = fi -> fh;
     
-    tmp = path2blocknum(path_t +1);
+    tmp = path2blocknum(path_tmp +1);
     blk = tmp -> block;
     fprintf(fdw,"Mathc foud path: %s at blk: %d\n", tmp -> path, tmp -> block);
     
+    printf("Tar path : %s\n", tar_path );
+    printf("TAR path found %d", size);
+    // reading data from tar file
+    //fd_t = open(tar_path, O_RDWR);
+    
+    fd_t = open("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/x.tar", O_RDWR);
+    lseek(fd_t, 0, SEEK_CUR);
+    lseek(fd_tar,(512*(blk+1)) , SEEK_CUR);
+    pread(fd_tar, buf, size, 0);
+    //printf("printing buff:  %s\n", buf);
+
     //res = pread()
 
-    memset(buf, 66, size);
+    //memset(buf, 66, size);
     //
     
-    fclose(fdw);
+    fclaose(fdw);
+    */
+    printf("tar_read ended ------------------\n");
     return 0;
 }
 
@@ -323,8 +364,9 @@ struct fuse_operations bb_oper = {
 /////////////////////////////////////////////////////////////////
 
 
+
 int main(int argc, char * argv[]){
-    int fd;
+    //int fd;
     int t = 0;
     int num =0;                     //random counter
     int fuse_stat;
@@ -333,10 +375,10 @@ int main(int argc, char * argv[]){
     struct bb_state * bb_data = (struct bb_state *) malloc(sizeof 
                                                 (struct bb_state));
     
-    
     char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/x.tar";
     
     //char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/bigdir.tar";
+    strcpy(tar_path, dflt_file);
     char * dflt_mount = "mountdir";
     printf("USAGE > ./a.out [mountdir]\n"); 
 
@@ -344,7 +386,7 @@ int main(int argc, char * argv[]){
 
     //open tar file
     if (argc < 2){
-        fd = open(dflt_file, O_RDWR );
+        fd_tar = open(dflt_file, O_RDWR );
         //absolutepath(dflt_mount);
         bb_data -> rootdir = dflt_file;
         //strdup(bb_data -> rootdir, dflt_file);
@@ -358,10 +400,10 @@ int main(int argc, char * argv[]){
         }
     }
     else{
-        fd = open(argv[1], O_RDWR);
+        fd_tar = open(argv[1], O_RDWR);
         // To be added later
     }
-    if (fd == -1){
+    if (fd_tar == -1){
         handle_error("Open Tar file!");
     }
     
@@ -372,19 +414,19 @@ int main(int argc, char * argv[]){
     //argv[argc-2] = argv[argc-1];
     //argv[argc-1] = NULL;
     //argc--;
-    
+    open(dflt_file, O_RDWR );
     
 
     //counting blocks
     printf("Block Count is = %d !!!!!!!\n", blk_count);
-    blk_count = get_blk_count(fd);
+    blk_count = get_blk_count(fd_tar);
     printf("Block Count is = %d !!!!!!!\n", blk_count);
     
     // turn over control to fuse                    BLOCKED fuse_main !!!
      fprintf(stderr, "about to call fuse_main\n");
      //fuse_stat = fuse_main(argc, argv, &bb_oper, bb_data);
      umask(0);
-     //fuse_main(argc, argv, &bb_oper, NULL);         //WORKING fuse command
+   //  fuse_main(argc, argv, &bb_oper, NULL);         //WORKING fuse command
 
      fprintf(stderr, "fuse_main returned %d\n", fuse_stat);
     
@@ -393,6 +435,7 @@ int main(int argc, char * argv[]){
     //       static int tar_readdir(const char *path, void *buf, fuse_fill_dir_t filler,off_t offset, struct fuse_file_info *fi,
     //                 enum fuse_readdir_flags flags)
     // rdir("/test",t_buff );
+    
     
      printf("TESTING \n");
     
@@ -405,7 +448,7 @@ int main(int argc, char * argv[]){
 
     //static int tar_read(const char *path, char *buf, size_t size, off_t offset,
     //    struct fuse_file_info *fi);
-    tar_read("/test/b.py", t_buff, 10, 0, fi );
+    tar_read("/test/b.py", t_buff, 2000, 0, fi );
     printf("BUFFER : %s\n", t_buff);
 
 
@@ -453,6 +496,6 @@ int main(int argc, char * argv[]){
         }
     }*/
     
-    close(fd);
+    close(fd_tar);
     return 0;
 }

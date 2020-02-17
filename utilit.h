@@ -81,7 +81,10 @@ List * head;
 // for bbfs functions
 char cwd [PATH_MAX];
 //char buff[BUFF_L];
-char t_buff[1024];
+int fd_tar;
+int left;
+char tar_path[1024];
+char t_buff[4096];
 char  t_path[1024];
 void absolutepath(char * root_folder);
 //////////////////////////////////
