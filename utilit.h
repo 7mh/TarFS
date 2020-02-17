@@ -30,6 +30,7 @@
 
 /*for bbfs functions*/
 #define PATH_MAX 255
+#define BUFF_L 255
 #define BB_DATA ((struct bb_state *) fuse_get_context()->private_data)
 
 
@@ -79,6 +80,9 @@ List * head;
 ///////////////////////////////////
 // for bbfs functions
 char cwd [PATH_MAX];
+//char buff[BUFF_L];
+char t_buff[1024];
+char  t_path[1024];
 void absolutepath(char * root_folder);
 //////////////////////////////////
 
@@ -97,9 +101,7 @@ typedef struct directory_easy{  //unused
 
 
 int get_blk_count(int fd );
-
-tr_blk * get_path_table(FILE * fd ); 
-
+int count_extra_slash(char * os_path, char * lst_path, int flg);
 int isZero(posix_header * hdr);
 
 List * path2blocknum(char  * req);

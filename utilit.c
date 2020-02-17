@@ -42,6 +42,47 @@ int isZero(posix_header * hdr){
         return 0;
 }
 
+// for 0 or 1 extra '/' returns 0
+// for more than 1 extra '/' return 1
+// if both paths are same return 2
+int count_extra_slash(char * os_path, char * lst_path, int flg){
+       int count = 0;
+       int match = 0;
+       int os_pathlen = strlen(os_path);
+       int lst_pathlen = strlen(lst_path)+1;
+       char tmp[512] = "/";
+       strcat(tmp, lst_path);
+       printf("LST : %s\n", tmp);
+   
+       if (strcmp(os_path, tmp) == 0){
+           return 2;
+       }
+       for (int i = 0; i < os_pathlen; i++){   //compare matchd char 
+           if (tmp[i] == os_path[i] )
+              match++;
+           else
+               return 99;
+       }
+   
+   
+       for (int i = os_pathlen ; i <= lst_pathlen; i++){  // count '/'
+           printf("%c", tmp[i]);
+           if (tmp[i] == '/'){
+               count++;
+           }
+           if (count > 2)      // more than 1 '/' found return
+               return 1;
+       }
+       if (flg == 1 && count == 0 )
+               return 0;
+       if (flg == 0 && count == 1 )
+           return 0;
+       return count;
+   }
+
+
+
+
 List * createL(char * path, int blockno, int type, mode_t mode, off_t size,
                 long int mtime,  List * head  ){
     
@@ -200,5 +241,4 @@ void absolutepath(char * root_folder){
 ////////////////////////////////////////////////////////////////////////
 
 
-//tr_blk * get_path_table(FILE * fd );
 

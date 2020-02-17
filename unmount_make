@@ -1,0 +1,4 @@
+#!/bin/bash
+fusermount -u mountdir 
+#ps -x
+make

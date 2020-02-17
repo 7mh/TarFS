@@ -1,0 +1,4 @@
+os Path: /test subfiles: test/b.py
+os Path: /test subfiles: test/subdir/data
+os Path: /test subfiles: test/subdir
+os Path: /test subfiles: test

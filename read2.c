@@ -76,6 +76,7 @@ static int tar_getattr(const char *path, struct stat *stbuf,
       //searching path into linked list and filling struct stat from Llist
       List * tmp;
       char * tst = path;
+      //strcpy(,)
       printf("Searching Llist path: %s \n", (tst+1));
       tmp = path2blocknum(tst+1);
       
@@ -99,7 +100,7 @@ static int tar_getattr(const char *path, struct stat *stbuf,
       stbuf -> st_size = /*4096;*/ tmp -> size;
       stbuf -> st_blksize = 512;
       stbuf -> st_blocks =(int) ceil(tmp -> size / 512.0);        // TO BE TESTED NEXT
-      //stbuf -> st_mtim.tv_sec = (long) tmp -> mtime;
+      stbuf ->st_mtim.tv_sec = (long ) 1581899947; //tmp -> mtime;
 
       /* filling up stat struct with global hdr variable
       mod = (int) strtol(hdr -> mode, NULL, 8);
@@ -169,6 +170,63 @@ int tar_open(const char *path, struct fuse_file_info *fi){
     return tmp -> block;
 }
 
+
+static int tar_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
+                off_t offset, struct fuse_file_info *fi,
+                enum fuse_readdir_flags flags){
+/*     
+ static int rdir(const char *path, void *buf){ 
+//                off_t offset, struct fuse_file_info *fi,
+//                enum fuse_readdir_flags flags){
+*/
+    List * curr = head;
+     int slashflg = 99 ;                  // gook if 0 bad if . > 0
+     struct stat st;
+     int rootflg = 0;
+     int os_plen;
+     //t_path = path;
+     strcpy(t_path,path);
+    
+    os_plen = strlen(t_path);
+     
+     if ((strcmp(t_path , "/")) == 0){
+         rootflg = 1;
+     }
+    
+     FILE * fdr = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/dir_read", "a+  ");
+
+     printf("at tar_readdir----------------------\n");
+     while (curr != NULL){
+          slashflg = count_extra_slash(t_path, curr -> path, rootflg);
+          if (slashflg == 0 && ( curr -> path[0] != '\0') ){
+            
+             fprintf(fdr, "os Path: %s subfiles: %s root: %d\n", t_path, curr->path, rootflg );
+            //if (curr -> path == NULL /){
+            //    fprintf(fdr,"Empty path Mathched \n");
+            //}
+             memset(&st, 0, sizeof(st));
+             st.st_ino = 0;
+             st.st_mode = curr -> mode;
+             if( rootflg == 1 ){
+             if (filler(buf, curr -> path ,  &st, 0, 0))
+                 break;
+             }
+             else{
+                if (filler(buf, curr -> path + os_plen ,  &st, 0, 0))
+                    break;
+
+             }
+
+          }
+        
+        curr = curr -> next;
+     }
+     fclose(fdr);
+     rootflg = 0;
+    return 0;
+ }
+
+
 static void * tar_init(struct fuse_conn_info *conn,
                struct fuse_config *cfg) {
 
@@ -212,7 +270,7 @@ struct fuse_operations bb_oper = {
  
  
 //   .opendir = bb_opendir,                 to be defined
-//   .readdir = bb_readdir,
+   .readdir = tar_readdir,
    //.releasedir = bb_releasedir,
    .init = tar_init,                       //not necessary
    //.ftruncate = bb_ftruncate,
@@ -234,7 +292,9 @@ int main(int argc, char * argv[]){
                                                 (struct bb_state));
     
     
-    char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/x.tar";
+   // char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/x.tar";
+    
+    char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/bigdir.tar";
     char * dflt_mount = "mountdir";
     printf("USAGE > ./a.out [mountdir]\n"); 
 
@@ -280,15 +340,18 @@ int main(int argc, char * argv[]){
     
     // turn over control to fuse                    BLOCKED fuse_main !!!
      fprintf(stderr, "about to call fuse_main\n");
-     //fuse_stat = fuse_main(argc, argv, &bb_oper, bb_data);
+     fuse_stat = fuse_main(argc, argv, &bb_oper, bb_data);
      umask(0);
-     fuse_main(argc, argv, &bb_oper, NULL);         //WORKING fuse command
+     //fuse_main(argc, argv, &bb_oper, NULL);         //WORKING fuse command
 
-     //fprintf(stderr, "fuse_main returned %d\n", fuse_stat);
+     fprintf(stderr, "fuse_main returned %d\n", fuse_stat);
     
      struct stat sb;
      //tar_getattr("/test/subdir/data", &sb, NULL);
-    
+    //       static int tar_readdir(const char *path, void *buf, fuse_fill_dir_t filler,off_t offset, struct fuse_file_info *fi,
+    //                 enum fuse_readdir_flags flags)
+    // rdir("/test",t_buff );
+
     //tar_getattr()
 
     //Reading tar
