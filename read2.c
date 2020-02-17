@@ -185,6 +185,7 @@ static int tar_read(const char *path, char *buf, size_t size, off_t offset,
         struct fuse_file_info *fi){
     char * path_t;
     List * curr;
+    off_t pnt_blk;
     path_t = strdup(path);
     
     FILE * fdw = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/dir_FILE", "a+");
@@ -196,12 +197,14 @@ static int tar_read(const char *path, char *buf, size_t size, off_t offset,
     //    return -1;
     curr = path2blocknum(path_t+1);
     left = curr -> size;
+    //pnt_blk = (curr -> block +2)*512;
+    pnt_blk = ( curr -> block + 1 )*512;
     
-    lseek(fd_tar, 0, SEEK_SET);
-    fprintf(fdw,"Match found path: %s at block:%d , size %d, asked: %lu\n",
-            curr -> path, curr -> block, curr -> size, size);
+    //lseek(fd_tar, 0, SEEK_SET);
+    fprintf(fdw,"Match found path: %s at block:%d, tar block: %ld , size %d, asked: %lu\n",
+            curr -> path, curr -> block,pnt_blk, curr -> size, size);
     
-    lseek(fd_tar, ((curr -> block +1)*512), SEEK_SET);
+    lseek(fd_tar,pnt_blk , SEEK_SET);
 
     return read(fd_tar, buf, size+ offset);
    
@@ -377,9 +380,9 @@ int main(int argc, char * argv[]){
     struct bb_state * bb_data = (struct bb_state *) malloc(sizeof 
                                                 (struct bb_state));
     
-    char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/x.tar";
+    //char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/x.tar";
     
-    //char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/bigdir.tar";
+    char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/bigdir.tar";
     strcpy(tar_path, dflt_file);
     char * dflt_mount = "mountdir";
     printf("USAGE > ./a.out [mountdir]\n"); 
@@ -444,7 +447,7 @@ int main(int argc, char * argv[]){
     
 
 
- //   struct fuse_file_info *fi;
+   // struct fuse_file_info *fi;
     //fi =  sizeof(*fi);
     //tar_open(const char *path, struct fuse_file_info *fi){
     //tar_open("/test/b.py", fi);
@@ -452,8 +455,8 @@ int main(int argc, char * argv[]){
 
     //static int tar_read(const char *path, char *buf, size_t size, off_t offset,
     //    struct fuse_file_info *fi);
-    //tar_read("/test/b.py", t_buff, 100, 0, fi );
-    //printf("BUFFER : %s\n", t_buff);
+ //   tar_read("/test/b.py", t_buff, 100, 0, fi );
+ //   printf("BUFFER : %s\n", t_buff);
 
 
 

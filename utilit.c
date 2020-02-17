@@ -117,17 +117,16 @@ List * createL(char * path, int blockno, int type, mode_t mode, off_t size,
     }
     else{
         curr -> next = head;
-        printf("Next block\n");
-        printf("%s\n", curr -> path);
+        printf("Creatd blk: %s, blk:%d\n", curr -> path, curr -> block);
         return curr;
     }
 }
 
 void print_list(List * head   ){
     printf("printing Link list !!!!!!!!!!!!!!!!!!!!\n");
-    printf("print head %s\n", head -> path);
+    printf("print head %s, block %d \n", head -> path, head -> block);
     while(head){
-        printf("%s\n", head -> path);
+        printf("%s, block :%d\n", head -> path, head -> block);
         head = head -> next;
     }
 }
@@ -139,13 +138,13 @@ int get_blk_count(int fd  ){
     int count = 0;      // this is blockno at Llist
     int typeflag;
     long int time1;
-    int skip;
+    off_t skip;
     posix_header * hdr1;
     hdr1 = (posix_header *) malloc(sizeof(*hdr1));
     //List * head;  // making first header a global var
 
     while (1){
-        t = read(fd, hdr1, sizeof(*hdr1));  count++;
+        t = read(fd, hdr1, sizeof(*hdr1));  
         size = strtol(hdr1 -> size, NULL, 8);
         typeflag =  strtol(&hdr1 -> typeflag, NULL, 0);
         time1 = strtol(hdr1 -> mode, NULL, 8);
@@ -158,22 +157,28 @@ int get_blk_count(int fd  ){
         if (hdr1 -> typeflag == DIRTYPE)
             mode = mode | (1 << 14);
 
-        printf("bytes readed %d, size = %d, type = %d,mode= %o\n"
-                ,t,size, typeflag, mode);
+        //SKIPPING data blocks of data files
+        skip =  (int) ceilf((float) (size /(float) BLOCK_SIZE)) * BLOCK_SIZE ;
+        printf("bytes readed %d, size = %d, type = %d,mode= %o, skip:%d\n"
+                ,t,size, typeflag, mode, skip);
         
+        //skip = skip * 512;
+        //printf("Skipping %d bytes for file data size %d \n ", skip, size);
+        //if ((typeflag == 0)){
+        //}
+
         //printf("Name = %s\n", hdr1 -> name);
         //Filling Linked list last arg is Llist head
 /**/        head = createL(hdr1 -> name, count, ((typeflag != 0)?1:0),mode, 
                 size, time1  ,head);
+        lseek(fd, skip,SEEK_CUR);
+        if (skip == 0)
+            count++;
+        if (skip > 1)
+            count +=  ((int) ceilf((float) (size /(float) BLOCK_SIZE)) + 1) ;
+        
         //printf("Testing !!!!! %s\n", head -> path);
 
-        //SKIPPING data blocks of data files
-        skip =  (int) ceilf((float) (size /(float) BLOCK_SIZE)) * BLOCK_SIZE ;
-        //skip = skip * 512;
-        //printf("Skipping %d bytes for file data size %d \n ", skip, size);
-        if ((size > 0) ||(typeflag <= 0)){
-            lseek(fd,  skip,SEEK_CUR);
-        }
 
         //stop reading more blocks cond.
         if (isZero(hdr1)){
