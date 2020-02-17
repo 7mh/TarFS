@@ -185,7 +185,6 @@ static int tar_read(const char *path, char *buf, size_t size, off_t offset,
         struct fuse_file_info *fi){
     
     char * path_t;
-    int left;
     List * curr;
     path_t = strdup(path);
     
@@ -197,13 +196,16 @@ static int tar_read(const char *path, char *buf, size_t size, off_t offset,
     //if (fi == NULL)
     //    return -1;
     curr = path2blocknum(path_t+1);
+    left = curr -> size;
+    //if ()
+    lseek(fd_tar, 0, SEEK_SET);
     fprintf(fdw,"Match found path: %s at block:%d , size %d\n",
             curr -> path, curr -> block, curr -> size);
     
-    lseek(fd_tar, 0, SEEK_SET);
     lseek(fd_tar, ((curr -> block +1)*512), SEEK_SET);
 
-    read(fd_tar, buf, size);
+    return read(fd_tar, buf, size);
+    //return 0;
 
     /*int fd1 = 0;
     int fd_t;
@@ -247,8 +249,7 @@ static int tar_read(const char *path, char *buf, size_t size, off_t offset,
     
     fclaose(fdw);
     */
-    printf("tar_read ended ------------------\n");
-    return 0;
+    //printf("tar_read ended ------------------\n");
 }
 
 
@@ -426,7 +427,7 @@ int main(int argc, char * argv[]){
      fprintf(stderr, "about to call fuse_main\n");
      //fuse_stat = fuse_main(argc, argv, &bb_oper, bb_data);
      umask(0);
-   //  fuse_main(argc, argv, &bb_oper, NULL);         //WORKING fuse command
+     fuse_main(argc, argv, &bb_oper, NULL);         //WORKING fuse command
 
      fprintf(stderr, "fuse_main returned %d\n", fuse_stat);
     
@@ -441,15 +442,15 @@ int main(int argc, char * argv[]){
     
 
 
-    struct fuse_file_info *fi;
+//    struct fuse_file_info *fi;
     //tar_open(const char *path, struct fuse_file_info *fi){
     //tar_open("/test/b.py", fi);
     //printf("block no: %lu\n", fi -> fh );
 
     //static int tar_read(const char *path, char *buf, size_t size, off_t offset,
     //    struct fuse_file_info *fi);
-    tar_read("/test/b.py", t_buff, 2000, 0, fi );
-    printf("BUFFER : %s\n", t_buff);
+//    tar_read("/test/b.py", t_buff, 2000, 0, fi );
+//    printf("BUFFER : %s\n", t_buff);
 
 
 

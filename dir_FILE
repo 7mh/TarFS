@@ -20,3 +20,15 @@ Match found path: test/b.py at block:4 , size 140
 tar_read call start--------------------
 os Path: /test/b.py 
 Match found path: test/b.py at block:4 , size 140
+tar_read call start--------------------
+os Path: /test/b.py 
+Match found path: test/b.py at block:4 , size 140
+tar_read call start--------------------
+os Path: /test/subdir/data 
+Match found path: test/subdir/data at block:3 , size 31
+tar_read call start--------------------
+os Path: /test/subdir/data 
+Match found path: test/subdir/data at block:3 , size 31
+tar_read call start--------------------
+os Path: /test/b.py 
+Match found path: test/b.py at block:4 , size 140

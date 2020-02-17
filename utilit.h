@@ -75,6 +75,10 @@ typedef struct Dir_list {
 
 List * head;
 
+typedef struct open_files{
+    char * path;
+
+} of_list;
 //////////////////////////////////////////
 
 ///////////////////////////////////
