@@ -171,19 +171,18 @@ int tar_open(const char *path, struct fuse_file_info *fi){
     char * path_t;
     path_t = strdup(path);
     //strcpy(path_t, path);
-    FILE * fdo = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/dir_open", "a+");
-    fprintf(fdo, "os Path: %s\n", path_t);
+    //FILE * fdo = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/dir_open", "a+");
+    //fprintf(fdo, "os Path: %s\n", path_t);
     printf("At bb_open: path = %s\n", path_t);
     tmp = path2blocknum(path_t+1);
 
-    //fi -> fh =  tmp -> block;
-    fclose(fdo);
+    //fi -> fh =  tmp -> block;     // unlock this
+    //fclose(fdo);
     return 0;
 }
 
 static int tar_read(const char *path, char *buf, size_t size, off_t offset,
         struct fuse_file_info *fi){
-    
     char * path_t;
     List * curr;
     path_t = strdup(path);
@@ -197,14 +196,16 @@ static int tar_read(const char *path, char *buf, size_t size, off_t offset,
     //    return -1;
     curr = path2blocknum(path_t+1);
     left = curr -> size;
-    //if ()
+    
     lseek(fd_tar, 0, SEEK_SET);
-    fprintf(fdw,"Match found path: %s at block:%d , size %d\n",
-            curr -> path, curr -> block, curr -> size);
+    fprintf(fdw,"Match found path: %s at block:%d , size %d, asked: %lu\n",
+            curr -> path, curr -> block, curr -> size, size);
     
     lseek(fd_tar, ((curr -> block +1)*512), SEEK_SET);
 
-    return read(fd_tar, buf, size);
+    return read(fd_tar, buf, size+ offset);
+   
+
     //return 0;
 
     /*int fd1 = 0;
@@ -384,8 +385,9 @@ int main(int argc, char * argv[]){
     printf("USAGE > ./a.out [mountdir]\n"); 
 
     hdr = (struct posix_header *)malloc(sizeof(*hdr));
+    tab1 = (struct open_files *) malloc(sizeof(* tab1));
 
-    //open tar file
+    ;//open tar file
     if (argc < 2){
         fd_tar = open(dflt_file, O_RDWR );
         //absolutepath(dflt_mount);
@@ -442,15 +444,16 @@ int main(int argc, char * argv[]){
     
 
 
-//    struct fuse_file_info *fi;
+ //   struct fuse_file_info *fi;
+    //fi =  sizeof(*fi);
     //tar_open(const char *path, struct fuse_file_info *fi){
     //tar_open("/test/b.py", fi);
     //printf("block no: %lu\n", fi -> fh );
 
     //static int tar_read(const char *path, char *buf, size_t size, off_t offset,
     //    struct fuse_file_info *fi);
-//    tar_read("/test/b.py", t_buff, 2000, 0, fi );
-//    printf("BUFFER : %s\n", t_buff);
+    //tar_read("/test/b.py", t_buff, 100, 0, fi );
+    //printf("BUFFER : %s\n", t_buff);
 
 
 

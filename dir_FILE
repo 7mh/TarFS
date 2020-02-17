@@ -1,34 +1,15 @@
-os Path: /test/b.py, block:
-Mathc foud path: test/b.py at blk: 4
-os Path: /test/b.py, block:
-Mathc foud path: test/b.py at blk: 4
-os Path: /test/b.py, block:
-Mathc foud path: test/b.py at blk: 4
-os Path: /test/b.py, block:
-Mathc foud path: test/b.py at blk: 4
-os Path: /test/b.py, block:
-Mathc foud path: test/b.py at blk: 4
-tar_read call start--------------------
-os Path: /test/b.py 
-Match found path: test/b.py at block : 4
-tar_read call start--------------------
-os Path: /test/b.py 
-Match found path: test/b.py at block : 4
-tar_read call start--------------------
-os Path: /test/b.py 
-Match found path: test/b.py at block:4 , size 140
-tar_read call start--------------------
-os Path: /test/b.py 
-Match found path: test/b.py at block:4 , size 140
-tar_read call start--------------------
-os Path: /test/b.py 
-Match found path: test/b.py at block:4 , size 140
 tar_read call start--------------------
 os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:3 , size 31
+Match found path: test/subdir/data at block:3 , size 31, asked: 4096
 tar_read call start--------------------
 os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:3 , size 31
+Match found path: test/subdir/data at block:3 , size 31, asked: 4096
 tar_read call start--------------------
 os Path: /test/b.py 
-Match found path: test/b.py at block:4 , size 140
+Match found path: test/b.py at block:4 , size 140, asked: 4096
+tar_read call start--------------------
+os Path: /test/b.py 
+Match found path: test/b.py at block:4 , size 140, asked: 4096
+tar_read call start--------------------
+os Path: /test/b.py 
+Match found path: test/b.py at block:4 , size 140, asked: 4096
