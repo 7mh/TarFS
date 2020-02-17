@@ -201,7 +201,7 @@ static int tar_read(const char *path, char *buf, size_t size, off_t offset,
     blk = tmp -> block;
     fprintf(fdw,"Mathc foud path: %s at blk: %d\n", tmp -> path, tmp -> block);
     
-    res = pread()
+    //res = pread()
 
     memset(buf, 66, size);
     //
