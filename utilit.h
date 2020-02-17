@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <math.h>
+#include <fcntl.h>
 #include <sys/stat.h>      
 #include <time.h>
 
@@ -63,9 +64,9 @@ typedef struct Dir_list {
     char * path;                    // absolute path name
     int block;                      // Tar block number
     int type;                           // file or dir
-    int mode;
+    mode_t mode;
     int size;
-    int mtime;
+    long int mtime;
     struct Dir_list * next;             //next block
     //struct Dir_list * parent ;          // parent dir node
     //char * pth [];                  // path of dir and files of all children
@@ -102,6 +103,6 @@ tr_blk * get_path_table(FILE * fd );
 int isZero(posix_header * hdr);
 
 List * path2blocknum(char  * req);
-List * create(char * path, int blockno, int type, int mode, int size,
-                 int mtime,  List * head  );
+List * createL(char * path, int blockno, int type, mode_t mode, off_t size,
+                  long int mtime,  List * head  );
 #endif

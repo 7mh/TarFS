@@ -1,39 +1,32 @@
-os Path: /test/subdir/data
-mode= 0, size= 0, blocks= 0,time = 0 END of getattr call -----------------
-os Path: /test/subdir/data
-mode= 0, size= 0, blocks= 0,time = 0 END of getattr call -----------------
 os Path: /test
-mode= 0, size= 0, blocks= 0,time = 0 END of getattr call -----------------
-os Path: /test
-mode= 0, size= 0, blocks= 0,time = 0 END of getattr call -----------------
-os Path: /test
-mode= 0, size= 0, blocks= 0,time = 0 END of getattr call -----------------
-os Path: /
-mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /
-mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /
-mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /
-mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /
-mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /test
  Found path name: test blockno = 1
-mode= 0, size= 0, blocks= 0,time = 0 
+mode= 16877, size= 0, blocks= 0,time = 493 
 END of getattr call -----------------
 os Path: /test
  Found path name: test blockno = 1
-mode= 0, size= 0, blocks= 0,time = 0 
+mode= 16877, size= 0, blocks= 0,time = 493 
 END of getattr call -----------------
 os Path: /test
  Found path name: test blockno = 1
-mode= 0, size= 0, blocks= 0,time = 0 
+mode= 16877, size= 0, blocks= 0,time = 493 
 END of getattr call -----------------
 os Path: /test/subdir
  Found path name: test/subdir blockno = 2
-mode= 0, size= 0, blocks= 0,time = 0 
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /test/subdir
+ Found path name: test/subdir blockno = 2
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /test/subdir/data
+ Found path name: test/subdir/data blockno = 3
+mode= 33188, size= 31, blocks= 1,time = 420 
 END of getattr call -----------------
 os Path: /test
  Found path name: test blockno = 1
-mode= 0, size= 0, blocks= 0,time = 0 
+mode= 16877, size= 0, blocks= 0,time = 493 
 END of getattr call -----------------
-os Path: /
-mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /
-mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /
-mode= 16804, size= 10240, blocks= 24,time = 1581892894 
+os Path: /test/subdir
+ Found path name: test/subdir blockno = 2
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------

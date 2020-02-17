@@ -42,8 +42,8 @@ int isZero(posix_header * hdr){
         return 0;
 }
 
-List * create(char * path, int blockno, int type, int mode, int size,
-                int mtime,  List * head  ){
+List * createL(char * path, int blockno, int type, mode_t mode, off_t size,
+                long int mtime,  List * head  ){
     
     List * curr= (List *) malloc(sizeof(List));
     int len;
@@ -60,7 +60,10 @@ List * create(char * path, int blockno, int type, int mode, int size,
     curr -> path =strndup( path,100 ); 
     curr ->  block = blockno;  //block numbetr
     curr -> type = type;    // 0 if file  and 1 if dir
-    
+    curr -> mode = mode;
+    curr -> size = size;
+    curr -> mtime = mtime;
+
     if (head == NULL){
         curr -> next = NULL;
         printf("First Block here !!!!!!!!\n");
@@ -90,6 +93,7 @@ int get_blk_count(int fd  ){
     int size, mode;
     int count = 0;      // this is blockno at Llist
     int typeflag;
+    long int time1;
     int skip;
     posix_header * hdr1;
     hdr1 = (posix_header *) malloc(sizeof(*hdr1));
@@ -99,7 +103,8 @@ int get_blk_count(int fd  ){
         t = read(fd, hdr1, sizeof(*hdr1));  count++;
         size = strtol(hdr1 -> size, NULL, 8);
         typeflag =  strtol(&hdr1 -> typeflag, NULL, 0);
-        mode = strtol (hdr1 -> mode , NULL, 8);
+        time1 = strtol(hdr1 -> mode, NULL, 8);
+        mode =(int) strtol (hdr1 -> mode , NULL, 8);
          // if a regfile type
         if ((hdr1 -> typeflag == REGTYPE) || (hdr1 -> typeflag == AREGTYPE) ){
             mode = mode | (1 << 15);
@@ -113,8 +118,8 @@ int get_blk_count(int fd  ){
         
         //printf("Name = %s\n", hdr1 -> name);
         //Filling Linked list last arg is Llist head
-        head = create(hdr1 -> name, count, ((typeflag != 0)?1:0),mode, 
-                size, strtol(hdr1 -> mtime,NULL,8)  ,head);
+/**/        head = createL(hdr1 -> name, count, ((typeflag != 0)?1:0),mode, 
+                size, time1  ,head);
         //printf("Testing !!!!! %s\n", head -> path);
 
         //SKIPPING data blocks of data files

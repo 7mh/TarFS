@@ -87,8 +87,8 @@ static int tar_getattr(const char *path, struct stat *stbuf,
       fprintf(fdl, "mode= %d, size= %ld, blocks= %ld,time = %ld ",
               tmp->mode, tmp ->size, (long int)ceil(tmp->size/512.0), tmp ->     mtime );
 
-      //stbuf -> st_mode =   tmp -> mode;
-      stbuf -> st_mode =   16840;
+      stbuf -> st_mode =   tmp -> mode;
+      //stbuf -> st_mode =   16840;
       //stbuf -> st_dev = 0;
       stbuf -> st_ino = 0;
       stbuf -> st_nlink = 1;
@@ -96,10 +96,9 @@ static int tar_getattr(const char *path, struct stat *stbuf,
       stbuf -> st_uid = getuid();
          //stbuf -> st_gid =  strtol(hdr -> gid, NULL, 8);
       stbuf -> st_gid = getgid();
-      stbuf -> st_size = 4096; /*tmp -> size*/;
+      stbuf -> st_size = /*4096;*/ tmp -> size;
       stbuf -> st_blksize = 512;
-      stbuf -> st_blocks =(long int) ceil(/*tmp -> size*/
-              4096 / 512.0);        // TO BE TESTED NEXT
+      stbuf -> st_blocks =(int) ceil(tmp -> size / 512.0);        // TO BE TESTED NEXT
       //stbuf -> st_mtim.tv_sec = (long) tmp -> mtime;
 
       /* filling up stat struct with global hdr variable
@@ -132,8 +131,6 @@ static int tar_getattr(const char *path, struct stat *stbuf,
  
       log_stat(stbuf);
       */
- 
- 
  
       if (retstat > 0){
          handle_error("Error at tar_getattr\n");
@@ -283,9 +280,9 @@ int main(int argc, char * argv[]){
     
     // turn over control to fuse                    BLOCKED fuse_main !!!
      fprintf(stderr, "about to call fuse_main\n");
-     fuse_stat = fuse_main(argc, argv, &bb_oper, bb_data);
+     //fuse_stat = fuse_main(argc, argv, &bb_oper, bb_data);
      umask(0);
-     //fuse_main(argc, argv, &bb_oper, NULL);         //WORKING fuse command
+     fuse_main(argc, argv, &bb_oper, NULL);         //WORKING fuse command
 
      //fprintf(stderr, "fuse_main returned %d\n", fuse_stat);
     
