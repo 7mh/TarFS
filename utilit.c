@@ -45,13 +45,13 @@ int isZero(posix_header * hdr){
 // for 0 or 1 extra '/' returns 0
 // for more than 1 extra '/' return 1
 // if both paths are same return 2
-int count_extra_slash(char * os_path, char * lst_path, int flg){
+  int count_extra_slash(char * os_path, char * lst_path, int flg){
        int count = 0;
-       int match = 0;
+       int match;
        int os_pathlen = strlen(os_path);
        int lst_pathlen = strlen(lst_path)+1;
        char tmp[512] = "/";
-       strcat(tmp, lst_path);
+     strcat(tmp, lst_path);
        printf("LST : %s\n", tmp);
    
        if (strcmp(os_path, tmp) == 0){
@@ -59,7 +59,7 @@ int count_extra_slash(char * os_path, char * lst_path, int flg){
        }
        for (int i = 0; i < os_pathlen; i++){   //compare matchd char 
            if (tmp[i] == os_path[i] )
-              match++;
+             match++;
            else
                return 99;
        }
@@ -73,10 +73,14 @@ int count_extra_slash(char * os_path, char * lst_path, int flg){
            if (count > 2)      // more than 1 '/' found return
                return 1;
        }
-       if (flg == 1 && count == 0 )
+       if (flg == 1 && count == 0 )    // if asked for root and no '/' 
                return 0;
-       if (flg == 0 && count == 1 )
+       if (flg == 0 && count == 1 )    // root flg 0 and found '/'
            return 0;
+       //os Path: /bigdir/bill/shakes subfiles: bigdir/bill/shakespeare.txt     root: 0
+       if (flg == 0 && count == 0)     // root flg 0 and not found '/'
+           return 98;
+   
        return count;
    }
 
