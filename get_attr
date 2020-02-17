@@ -1,0 +1,39 @@
+os Path: /test/subdir/data
+mode= 0, size= 0, blocks= 0,time = 0 END of getattr call -----------------
+os Path: /test/subdir/data
+mode= 0, size= 0, blocks= 0,time = 0 END of getattr call -----------------
+os Path: /test
+mode= 0, size= 0, blocks= 0,time = 0 END of getattr call -----------------
+os Path: /test
+mode= 0, size= 0, blocks= 0,time = 0 END of getattr call -----------------
+os Path: /test
+mode= 0, size= 0, blocks= 0,time = 0 END of getattr call -----------------
+os Path: /
+mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /
+mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /
+mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /
+mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /
+mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /test
+ Found path name: test blockno = 1
+mode= 0, size= 0, blocks= 0,time = 0 
+END of getattr call -----------------
+os Path: /test
+ Found path name: test blockno = 1
+mode= 0, size= 0, blocks= 0,time = 0 
+END of getattr call -----------------
+os Path: /test
+ Found path name: test blockno = 1
+mode= 0, size= 0, blocks= 0,time = 0 
+END of getattr call -----------------
+os Path: /test/subdir
+ Found path name: test/subdir blockno = 2
+mode= 0, size= 0, blocks= 0,time = 0 
+END of getattr call -----------------
+os Path: /test
+ Found path name: test blockno = 1
+mode= 0, size= 0, blocks= 0,time = 0 
+END of getattr call -----------------
+os Path: /
+mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /
+mode= 16804, size= 10240, blocks= 24,time = 1581892894 os Path: /
+mode= 16804, size= 10240, blocks= 24,time = 1581892894 

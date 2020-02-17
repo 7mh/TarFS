@@ -46,7 +46,16 @@ List * create(char * path, int blockno, int type, int mode, int size,
                 int mtime,  List * head  ){
     
     List * curr= (List *) malloc(sizeof(List));
-    
+    int len;
+
+     //modifying path
+     if (type == 1){         // only for DIR
+         len = strlen(path);
+         path = strndup(path, len-1);      //droping last char '/'
+     }
+     //END
+
+
     //max path length is 110 coz tar struct has len 100 extra 10 for debugging  
     curr -> path =strndup( path,100 ); 
     curr ->  block = blockno;  //block numbetr
@@ -90,7 +99,7 @@ int get_blk_count(int fd  ){
         t = read(fd, hdr1, sizeof(*hdr1));  count++;
         size = strtol(hdr1 -> size, NULL, 8);
         typeflag =  strtol(&hdr1 -> typeflag, NULL, 0);
-        mode = strtol (hdr1 -> mode , NULL, 0);
+        mode = strtol (hdr1 -> mode , NULL, 8);
          // if a regfile type
         if ((hdr1 -> typeflag == REGTYPE) || (hdr1 -> typeflag == AREGTYPE) ){
             mode = mode | (1 << 15);

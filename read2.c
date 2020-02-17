@@ -31,66 +31,120 @@ struct bb_state{
  };
 
 
-posix_header *  hdr = NULL; 
+posix_header *  hdr = NULL;
+
 static int tar_getattr(const char *path, struct stat *stbuf,
-                struct fuse_file_info *fi) {
+                 struct fuse_file_info *fi) {
 
-     int retstat = 0;           //return status
-     char fpath[PATH_MAX];
-     int mod;
-     //HANDELING >  when char * path = "/"  
-     char * root = "/";
-     printf("testing !!!!!!!!!!!!!!!!!\n");
-     if (strcmp(root, path) == 0){
-         stbuf = &tar_st;
-         printf("Returned RoOt stat !!! \n");
-         return retstat;
-     }
-     //END
-    
-     //searching path into linked list and filling struct stat from Llist
-     List * tmp;
-     char * tst = "/test/subdir/data";
-     printf("Searching Llist path: %s \n", (tst+1));
-     tmp = path2blocknum(tst+1);
-     printf(" Found path name: %s\n", tmp -> path);
-     
-     /* filling up stat struct with global hdr variable
-     mod = (int) strtol(hdr -> mode, NULL, 8);
-     // if a regfile type
-     if ((hdr -> typeflag == REGTYPE) || (hdr -> typeflag == AREGTYPE) ){
-         mod = mod | (1 << 15);
-     }
-     //if a directory type
-     if (hdr -> typeflag == DIRTYPE)
-         mod = mod | (1 << 14);
-    //debugging
-     printf("hdr -> mode = %o, typeflag = %ld \n", mod, strtol(&hdr ->typeflag, NULL, 0));
+      int retstat = 0;           //return status
+      char fpath[PATH_MAX];
+      int mod;
 
-     stbuf -> st_mode =   mod;
-     stbuf -> st_dev = 0;
-     stbuf -> st_ino = 0;
-     stbuf -> st_nlink = 0;
-     //stbuf -> st_uid =  strtol(hdr -> uid, NULL, 8);
-     stbuf -> st_uid = getuid();
-     //stbuf -> st_gid =  strtol(hdr -> gid, NULL, 8);
-     stbuf -> st_gid = getgid();
-     stbuf -> st_size = strtol(hdr -> size, NULL ,8);
-     stbuf -> st_blksize = 512;
-     stbuf -> st_blocks = blk_count;
-     */
 
-     /*retstat = log_syscall("lstat", lstat(fpath, stbuf), 0);
+      FILE * fdl = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/get_attr", "a+  ");
+      fprintf(fdl, "os Path: %s\n", path);
 
-     log_stat(stbuf);
-     */
-     
-     if (retstat > 0){
-        handle_error("Error at BB_getattr\n");
-     }
-        
-     return retstat;
- }
+      //HANDELING >  when char * path = "/"
+      char * root = "/";
+      printf("testing !!!!!!!!!!!!!!!!!\n");
+      if (strcmp(root, path) == 0){
+          //stbuf = &tar_st;                     //NOT working
+          //filling stbuf with tar_st values
+          stbuf -> st_dev = tar_st.st_dev ;
+          stbuf -> st_ino = tar_st.st_ino ;
+          // making it dir from file (x.tar)
+          if ((tar_st.st_mode & S_IFMT) == S_IFREG) {
+             tar_st.st_mode =(tar_st.st_mode & (~S_IFREG)) | (S_IFDIR);
+          }
+          stbuf -> st_mode = tar_st.st_mode;
+          stbuf -> st_nlink = tar_st.st_nlink ;
+          stbuf -> st_uid = tar_st.st_uid ;
+          stbuf -> st_gid = tar_st.st_gid ;
+          stbuf -> st_rdev = tar_st.st_rdev ;
+          stbuf -> st_size = tar_st.st_size ;
+          stbuf -> st_blksize = tar_st.st_blksize ;
+          stbuf -> st_blocks = tar_st.st_blocks ;
+          stbuf -> st_mtim.tv_sec = tar_st.st_mtim.tv_sec ;
+
+          fprintf(fdl, "mode= %d, size= %ld, blocks= %ld,time = %ld ", tar_st.   st_mode, tar_st.st_size, tar_st.st_blocks, tar_st.st_mtim.tv_sec );
+
+
+          printf("Returned RoOt stat !!! \n");
+          return retstat;
+      }
+      //END
+      //searching path into linked list and filling struct stat from Llist
+      List * tmp;
+      char * tst = path;
+      printf("Searching Llist path: %s \n", (tst+1));
+      tmp = path2blocknum(tst+1);
+      
+      //printf(" Found path name: %s blockno = %d\n", tmp -> path,
+      //        tmp -> block);
+      fprintf(fdl," Found path name: %s blockno = %d\n", tmp -> path,
+              tmp -> block);
+
+      fprintf(fdl, "mode= %d, size= %ld, blocks= %ld,time = %ld ",
+              tmp->mode, tmp ->size, (long int)ceil(tmp->size/512.0), tmp ->     mtime );
+
+      //stbuf -> st_mode =   tmp -> mode;
+      stbuf -> st_mode =   16840;
+      //stbuf -> st_dev = 0;
+      stbuf -> st_ino = 0;
+      stbuf -> st_nlink = 1;
+         //stbuf -> st_uid =  strtol(hdr -> uid, NULL, 8);
+      stbuf -> st_uid = getuid();
+         //stbuf -> st_gid =  strtol(hdr -> gid, NULL, 8);
+      stbuf -> st_gid = getgid();
+      stbuf -> st_size = 4096; /*tmp -> size*/;
+      stbuf -> st_blksize = 512;
+      stbuf -> st_blocks =(long int) ceil(/*tmp -> size*/
+              4096 / 512.0);        // TO BE TESTED NEXT
+      //stbuf -> st_mtim.tv_sec = (long) tmp -> mtime;
+
+      /* filling up stat struct with global hdr variable
+      mod = (int) strtol(hdr -> mode, NULL, 8);
+      // if a regfile type
+      if ((hdr -> typeflag == REGTYPE) || (hdr -> typeflag == AREGTYPE) ){
+          mod = mod | (1 << 15);
+      }
+      //if a directory type
+      if (hdr -> typeflag == DIRTYPE)
+          mod = mod | (1 << 14);
+     //debugging
+      printf("hdr -> mode = %o, typeflag = %ld \n", mod,
+                strtol(&hdr ->typeflag, NULL, 0));
+
+      stbuf -> st_mode =   mod;
+      stbuf -> st_dev = 0;
+      stbuf -> st_ino = 0;
+      stbuf -> st_nlink = 0;
+      //stbuf -> st_uid =  strtol(hdr -> uid, NULL, 8);
+      stbuf -> st_uid = getuid();
+      //stbuf -> st_gid =  strtol(hdr -> gid, NULL, 8);
+      stbuf -> st_gid = getgid();
+      stbuf -> st_size = strtol(hdr -> size, NULL ,8);
+      stbuf -> st_blksize = 512;
+      stbuf -> st_blocks = blk_count;
+      */
+ 
+      /*retstat = log_syscall("lstat", lstat(fpath, stbuf), 0);
+ 
+      log_stat(stbuf);
+      */
+ 
+ 
+ 
+      if (retstat > 0){
+         handle_error("Error at tar_getattr\n");
+      }
+      fprintf(fdl,"\nEND of getattr call -----------------\n");
+      fclose(fdl);
+ 
+      return 0;
+  }
+ 
+
 
 
 /** Function to add an entry in a readdir() operation
@@ -183,8 +237,8 @@ int main(int argc, char * argv[]){
                                                 (struct bb_state));
     
     
-    char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/readtar/x.tar";
-    char * dflt_mount = "/mountdir";
+    char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/x.tar";
+    char * dflt_mount = "mountdir";
     printf("USAGE > ./a.out [mountdir]\n"); 
 
     hdr = (struct posix_header *)malloc(sizeof(*hdr));
@@ -196,6 +250,10 @@ int main(int argc, char * argv[]){
         bb_data -> rootdir = dflt_file;
         //strdup(bb_data -> rootdir, dflt_file);
         // getting tar file stat and saving it in global variable
+        argc = 2;
+        argv[1] = strdup(dflt_mount);
+        argv[2] = NULL;
+        printf("FILE NAME after = %s\n", argv[1]);
         if( stat(dflt_file, &tar_st )  != 0){
             perror("Tar file stat error \n");
         }
@@ -225,11 +283,14 @@ int main(int argc, char * argv[]){
     
     // turn over control to fuse                    BLOCKED fuse_main !!!
      fprintf(stderr, "about to call fuse_main\n");
-     //fuse_stat = fuse_main(argc, argv, &bb_oper, bb_data);
-     fprintf(stderr, "fuse_main returned %d\n", fuse_stat);
+     fuse_stat = fuse_main(argc, argv, &bb_oper, bb_data);
+     umask(0);
+     //fuse_main(argc, argv, &bb_oper, NULL);         //WORKING fuse command
+
+     //fprintf(stderr, "fuse_main returned %d\n", fuse_stat);
     
      struct stat sb;
-     tar_getattr("a", &sb, NULL);
+     //tar_getattr("/test/subdir/data", &sb, NULL);
     
     //tar_getattr()
 
