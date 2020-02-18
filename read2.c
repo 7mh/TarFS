@@ -41,7 +41,7 @@ static int tar_getattr(const char *path, struct stat *stbuf,
       int mod;
 
 
-      FILE * fdl = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/get_attr", "a+");
+      FILE * fdl = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/2readtar/get_attr", "a+");
       fprintf(fdl, "os Path: %s\n", path);
 
       //HANDELING >  when char * path = "/"
@@ -171,7 +171,7 @@ int tar_open(const char *path, struct fuse_file_info *fi){
     char * path_t;
     path_t = strdup(path);
     //strcpy(path_t, path);
-    //FILE * fdo = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/dir_open", "a+");
+    //FILE * fdo = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/2readtar/dir_open", "a+");
     //fprintf(fdo, "os Path: %s\n", path_t);
     printf("At bb_open: path = %s\n", path_t);
     tmp = path2blocknum(path_t+1);
@@ -186,17 +186,21 @@ static int tar_read(const char *path, char *buf, size_t size, off_t offset,
     char * path_t;
     List * curr;
     off_t pnt_blk;
+    ssize_t bytes_r;
     path_t = strdup(path);
     
-    FILE * fdw = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/dir_FILE", "a+");
+    FILE * fdw = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/2readtar/dir_FILE", "a+");
     //printf("DIR_FILE IS OPENED\n");
     fprintf(fdw, "tar_read call start--------------------\n");
-    fprintf(fdw, "os Path: %s \n", path);
+    fprintf(fdw, "os Path: %s, size: %ld \n", path, size);
     
     //if (fi == NULL)
     //    return -1;
     curr = path2blocknum(path_t+1);
     left = curr -> size;
+    if (size < curr -> size){
+        tab1 -> sent = tab1 -> sent + size;
+    }
     //pnt_blk = (curr -> block +2)*512;
     pnt_blk = ( curr -> block + 1 )*512;
     
@@ -204,10 +208,17 @@ static int tar_read(const char *path, char *buf, size_t size, off_t offset,
     fprintf(fdw,"Match found path: %s at block:%d, tar block: %ld , size %d, asked: %lu\n",
             curr -> path, curr -> block,pnt_blk, curr -> size, size);
     
-    lseek(fd_tar,pnt_blk , SEEK_SET);
+    lseek(fd_tar,pnt_blk + tab1 -> sent , SEEK_SET);
 
-    return read(fd_tar, buf, size+ offset);
+    bytes_r =  read(fd_tar, buf, size+ offset);
    
+    if (bytes_r == -1){
+        fclose(fdw);
+        return -1;
+    }
+
+    fclose(fdw);
+    return bytes_r;
 
     //return 0;
 
@@ -281,7 +292,7 @@ static int tar_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
          rootflg = 1;
      }
     
-     FILE * fdr = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/dir_read", "a+  ");
+     FILE * fdr = fopen("/u1/h3/hashmi/classes/os2Cs671/copyreadtar/2readtar/dir_read", "a+  ");
 
      printf("at tar_readdir----------------------\n");
      while (curr != NULL){
@@ -380,9 +391,9 @@ int main(int argc, char * argv[]){
     struct bb_state * bb_data = (struct bb_state *) malloc(sizeof 
                                                 (struct bb_state));
     
-    //char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/x.tar";
+    //char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/2readtar/x.tar";
     
-    char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/readtar/bigdir.tar";
+    char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/2readtar/bigdir.tar";
     strcpy(tar_path, dflt_file);
     char * dflt_mount = "mountdir";
     printf("USAGE > ./a.out [mountdir]\n"); 

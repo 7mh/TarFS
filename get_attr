@@ -1566,3 +1566,467 @@ os Path: /bigdir/bill/shakespeare.txt
  Found path name: bigdir/bill/shakespeare.txt blockno = 71
 mode= 33188, size= 5589887, blocks= 10918,time = 420 
 END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir1
+ Found path name: bigdir/subdir1 blockno = 11510
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir2
+ Found path name: bigdir/subdir2 blockno = 18
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/perm1.c
+ Found path name: bigdir/perm1.c blockno = 14
+mode= 33188, size= 1305, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm2.c
+ Found path name: bigdir/perm2.c blockno = 11
+mode= 33188, size= 588, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perms_gray2.c
+ Found path name: bigdir/perms_gray2.c blockno = 7
+mode= 33188, size= 1257, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm.c
+ Found path name: bigdir/perm.c blockno = 4
+mode= 33188, size= 626, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm3.c
+ Found path name: bigdir/perm3.c blockno = 1
+mode= 33188, size= 709, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/perm1.c
+ Found path name: bigdir/perm1.c blockno = 14
+mode= 33188, size= 1305, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir1
+ Found path name: bigdir/subdir1 blockno = 11510
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir2
+ Found path name: bigdir/subdir2 blockno = 18
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/perm1.c
+ Found path name: bigdir/perm1.c blockno = 14
+mode= 33188, size= 1305, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm2.c
+ Found path name: bigdir/perm2.c blockno = 11
+mode= 33188, size= 588, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perms_gray2.c
+ Found path name: bigdir/perms_gray2.c blockno = 7
+mode= 33188, size= 1257, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm.c
+ Found path name: bigdir/perm.c blockno = 4
+mode= 33188, size= 626, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm3.c
+ Found path name: bigdir/perm3.c blockno = 1
+mode= 33188, size= 709, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakes
+ Found path name: bigdir/bill/shakes blockno = 10990
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakespeare.txt
+ Found path name: bigdir/bill/shakespeare.txt blockno = 71
+mode= 33188, size= 5589887, blocks= 10918,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakes
+ Found path name: bigdir/bill/shakes blockno = 10990
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakespeare.txt
+ Found path name: bigdir/bill/shakespeare.txt blockno = 71
+mode= 33188, size= 5589887, blocks= 10918,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir1
+ Found path name: bigdir/subdir1 blockno = 11510
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir2
+ Found path name: bigdir/subdir2 blockno = 18
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/perm1.c
+ Found path name: bigdir/perm1.c blockno = 14
+mode= 33188, size= 1305, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm2.c
+ Found path name: bigdir/perm2.c blockno = 11
+mode= 33188, size= 588, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perms_gray2.c
+ Found path name: bigdir/perms_gray2.c blockno = 7
+mode= 33188, size= 1257, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm.c
+ Found path name: bigdir/perm.c blockno = 4
+mode= 33188, size= 626, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm3.c
+ Found path name: bigdir/perm3.c blockno = 1
+mode= 33188, size= 709, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakes
+ Found path name: bigdir/bill/shakes blockno = 10990
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakespeare.txt
+ Found path name: bigdir/bill/shakespeare.txt blockno = 71
+mode= 33188, size= 5589887, blocks= 10918,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakes
+ Found path name: bigdir/bill/shakes blockno = 10990
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakespeare.txt
+ Found path name: bigdir/bill/shakespeare.txt blockno = 71
+mode= 33188, size= 5589887, blocks= 10918,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir1
+ Found path name: bigdir/subdir1 blockno = 11510
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir2
+ Found path name: bigdir/subdir2 blockno = 18
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/perm1.c
+ Found path name: bigdir/perm1.c blockno = 14
+mode= 33188, size= 1305, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm2.c
+ Found path name: bigdir/perm2.c blockno = 11
+mode= 33188, size= 588, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perms_gray2.c
+ Found path name: bigdir/perms_gray2.c blockno = 7
+mode= 33188, size= 1257, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm.c
+ Found path name: bigdir/perm.c blockno = 4
+mode= 33188, size= 626, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm3.c
+ Found path name: bigdir/perm3.c blockno = 1
+mode= 33188, size= 709, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakes
+ Found path name: bigdir/bill/shakes blockno = 10990
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakespeare.txt
+ Found path name: bigdir/bill/shakespeare.txt blockno = 71
+mode= 33188, size= 5589887, blocks= 10918,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakes
+ Found path name: bigdir/bill/shakes blockno = 10990
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakespeare.txt
+ Found path name: bigdir/bill/shakespeare.txt blockno = 71
+mode= 33188, size= 5589887, blocks= 10918,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir1
+ Found path name: bigdir/subdir1 blockno = 11510
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir2
+ Found path name: bigdir/subdir2 blockno = 18
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/perm1.c
+ Found path name: bigdir/perm1.c blockno = 14
+mode= 33188, size= 1305, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm2.c
+ Found path name: bigdir/perm2.c blockno = 11
+mode= 33188, size= 588, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perms_gray2.c
+ Found path name: bigdir/perms_gray2.c blockno = 7
+mode= 33188, size= 1257, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm.c
+ Found path name: bigdir/perm.c blockno = 4
+mode= 33188, size= 626, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm3.c
+ Found path name: bigdir/perm3.c blockno = 1
+mode= 33188, size= 709, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/perm1.c
+ Found path name: bigdir/perm1.c blockno = 14
+mode= 33188, size= 1305, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir1
+ Found path name: bigdir/subdir1 blockno = 11510
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir2
+ Found path name: bigdir/subdir2 blockno = 18
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/perm1.c
+ Found path name: bigdir/perm1.c blockno = 14
+mode= 33188, size= 1305, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm2.c
+ Found path name: bigdir/perm2.c blockno = 11
+mode= 33188, size= 588, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perms_gray2.c
+ Found path name: bigdir/perms_gray2.c blockno = 7
+mode= 33188, size= 1257, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm.c
+ Found path name: bigdir/perm.c blockno = 4
+mode= 33188, size= 626, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm3.c
+ Found path name: bigdir/perm3.c blockno = 1
+mode= 33188, size= 709, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakes
+ Found path name: bigdir/bill/shakes blockno = 10990
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakespeare.txt
+ Found path name: bigdir/bill/shakespeare.txt blockno = 71
+mode= 33188, size= 5589887, blocks= 10918,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakes
+ Found path name: bigdir/bill/shakes blockno = 10990
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakespeare.txt
+ Found path name: bigdir/bill/shakespeare.txt blockno = 71
+mode= 33188, size= 5589887, blocks= 10918,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir1
+ Found path name: bigdir/subdir1 blockno = 11510
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/subdir2
+ Found path name: bigdir/subdir2 blockno = 18
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/perm1.c
+ Found path name: bigdir/perm1.c blockno = 14
+mode= 33188, size= 1305, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm2.c
+ Found path name: bigdir/perm2.c blockno = 11
+mode= 33188, size= 588, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perms_gray2.c
+ Found path name: bigdir/perms_gray2.c blockno = 7
+mode= 33188, size= 1257, blocks= 3,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm.c
+ Found path name: bigdir/perm.c blockno = 4
+mode= 33188, size= 626, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/perm3.c
+ Found path name: bigdir/perm3.c blockno = 1
+mode= 33188, size= 709, blocks= 2,time = 420 
+END of getattr call -----------------
+os Path: /bigdir
+ Found path name: bigdir blockno = 0
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakes
+ Found path name: bigdir/bill/shakes blockno = 10990
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakespeare.txt
+ Found path name: bigdir/bill/shakespeare.txt blockno = 71
+mode= 33188, size= 5589887, blocks= 10918,time = 420 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakes
+ Found path name: bigdir/bill/shakes blockno = 10990
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill
+ Found path name: bigdir/bill blockno = 70
+mode= 16877, size= 0, blocks= 0,time = 493 
+END of getattr call -----------------
+os Path: /bigdir/bill/shakespeare.txt
+ Found path name: bigdir/bill/shakespeare.txt blockno = 71
+mode= 33188, size= 5589887, blocks= 10918,time = 420 
+END of getattr call -----------------

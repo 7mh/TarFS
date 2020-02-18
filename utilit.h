@@ -78,6 +78,7 @@ List * head;
 typedef struct open_files{
     int size;
     int left;
+    int sent;
     int open_flg;
 
 } of_list;

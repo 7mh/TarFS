@@ -1,63 +1,18 @@
 tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:3, tar block: 2048 , size 31, asked: 100
+os Path: /bigdir/perm1.c, size: 4096 
+Match found path: bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096
 tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:3, tar block: 2048 , size 31, asked: 100
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:3, tar block: 2560 , size 31, asked: 100
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:3, tar block: 0 , size 31, asked: 100
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:3, tar block: 2048 , size 31, asked: 100
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:3, tar block: 2560 , size 31, asked: 100
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:3, tar block: 0 , size 31, asked: 100
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:3, tar block: 512 , size 31, asked: 100
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:3, tar block: 512 , size 31, asked: 100
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:2, tar block: 1536 , size 31, asked: 100
-tar_read call start--------------------
-os Path: /test/b.py 
-Match found path: test/b.py at block:4, tar block: 2560 , size 140, asked: 100
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:2, tar block: 1536 , size 31, asked: 4096
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:2, tar block: 1536 , size 31, asked: 4096
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:2, tar block: 1536 , size 31, asked: 4096
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:2, tar block: 1536 , size 31, asked: 4096
-tar_read call start--------------------
-os Path: /test/subdir/data 
-Match found path: test/subdir/data at block:2, tar block: 1536 , size 31, asked: 4096
-tar_read call start--------------------
-os Path: /test/b.py 
-Match found path: test/b.py at block:4, tar block: 2560 , size 140, asked: 4096
-tar_read call start--------------------
-os Path: /test/b.py 
-Match found path: test/b.py at block:4, tar block: 2560 , size 140, asked: 4096
-tar_read call start--------------------
-os Path: /test/b.py 
-Match found path: test/b.py at block:4, tar block: 2560 , size 140, asked: 4096
-tar_read call start--------------------
-os Path: /test/b.py 
-Match found path: test/b.py at block:4, tar block: 2560 , size 140, asked: 4096
-tar_read call start--------------------
-os Path: /test/b.py 
-Match found path: test/b.py at block:4, tar block: 2560 , size 140, asked: 4096
+os Path: /bigdir/bill/shakespeare.txt, size: 262144 
+Match found path: bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144
+y dear wife's estimate, her womb's increase
+    And treasure of my loins. Then if I would
+    Speak that-
+  SICINIUS. We know your drift. Speak what?
+  BRUTUS. There's no more to be said, but he tar_read call start--------------------
+os Path: /bigdir/bill/shakespeare.txt, size: 262144 
+Match found path: bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144
+y dear wife's estimate, her womb's increase
+    And treasure of my loins. Then if I would
+    Speak that-
+  SICINIUS. We know your drift. Speak what?
+  BRUTUS. There's no more to be said, but he 
