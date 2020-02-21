@@ -230,6 +230,7 @@ static int tar_read(const char *path, char *buf, size_t size, off_t offset,
   
         //lseek(fd_tar,pnt_blk , SEEK_SET);
         //bytes_r =  read(fd_tar, buf, size+ offset);
+        bytes_r =  pread(fd_tar, buf, size, pnt_blk+offset);
         fprintf(fdw,"tar_read ended ------------------\n");
         if (bytes_r == -1)
             bytes_r = -errno;
