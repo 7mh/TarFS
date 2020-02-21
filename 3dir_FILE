@@ -1,0 +1,16 @@
+tar_read call start--------------------
+os Path: /bigdir/perm1.c, size: 4096 
+Match 1 found path: bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096, offset: 0
+tar_read call start--------------------
+os Path: /bigdir/perm1.c, size: 4096 
+Match 1 found path: bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096, offset: 0
+tar_read call start--------------------
+os Path: /bigdir/perm1.c, size: 4096 
+Match 1 found path: bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096, offset: 0
+tar_read call start--------------------
+os Path: /bigdir/perm1.c, size: 4096 
+Match 1 found path: bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096, offset: 0
+tar_read call start--------------------
+os Path: /bigdir/perm1.c, size: 4096 
+Match 1 found path: bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096, offset: 0
+path saved: /bigdir/perm1.c

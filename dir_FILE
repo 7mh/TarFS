@@ -1,18 +1,783 @@
+
 tar_read call start--------------------
-os Path: /bigdir/perm1.c, size: 4096 
-Match found path: bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: -47
+Match 1 found path: bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 0, fh: 71 
+tar_read ended ------------------
+
 tar_read call start--------------------
-os Path: /bigdir/bill/shakespeare.txt, size: 262144 
-Match found path: bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144
-y dear wife's estimate, her womb's increase
-    And treasure of my loins. Then if I would
-    Speak that-
-  SICINIUS. We know your drift. Speak what?
-  BRUTUS. There's no more to be said, but he tar_read call start--------------------
-os Path: /bigdir/bill/shakespeare.txt, size: 262144 
-Match found path: bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144
-y dear wife's estimate, her womb's increase
-    And treasure of my loins. Then if I would
-    Speak that-
-  SICINIUS. We know your drift. Speak what?
-  BRUTUS. There's no more to be said, but he 
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 262144 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 262144
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: -47
+Match 1 found path: bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 0, fh: 71 
+tar_read ended ------------------
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 262144 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 262144
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 786432 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 524288
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1310720 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 786432
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1835008 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1048576
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2359296 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1310720
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2883584 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1572864
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3407872 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1835008
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3932160 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2097152
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4456448 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2359296
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4980736 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2621440
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 5505024 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2883584
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: -47
+Match 1 found path: bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 0, fh: 71 
+tar_read ended ------------------
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 262144 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 262144
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 524288 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 524288
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 786432 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 786432
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1048576 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1048576
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1310720 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1310720
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1572864 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1572864
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1835008 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1835008
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2097152 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2097152
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2359296 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2359296
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2621440 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2621440
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2883584 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2883584
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3145728 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3145728
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3407872 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3407872
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3670016 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3670016
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3932160 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3932160
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4194304 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4194304
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4456448 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4456448
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4718592 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4718592
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4980736 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4980736
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 5242880 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 5242880
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 86016 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 5505024 bytes, asked: 86016
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 86016, offset: 5505024
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 4096 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 5591040 bytes, asked: 4096
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 4096, offset: 5586944
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: -47
+Match 1 found path: bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 0, fh: 71 
+tar_read ended ------------------
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 262144 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 262144
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 524288 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 524288
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 786432 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 786432
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1048576 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1048576
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1310720 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1310720
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1572864 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1572864
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1835008 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1835008
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2097152 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2097152
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2359296 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2359296
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2621440 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2621440
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2883584 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2883584
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3145728 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3145728
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3407872 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3407872
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3670016 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3670016
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3932160 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3932160
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4194304 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4194304
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4456448 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4456448
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4718592 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4718592
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4980736 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4980736
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 5242880 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 5242880
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 86016 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 5505024 bytes, asked: 86016
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 86016, offset: 5505024
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 4096 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 5591040 bytes, asked: 4096
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 4096, offset: 5586944
+
+tar_read call start--------------------
+os Path len: /bigdir/perm1.c , size: 4096 compare: -47
+Match 1 found path: bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096, offset: 0, fh: 14 
+tar_read ended ------------------
+
+tar_read call start--------------------
+os Path len: /bigdir/perm1.c , size: 4096 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/perm1.cread ahead file: /bigdir/perm1.c, already sent; 4096 bytes, asked: 4096
+Match found path: /bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096, offset: 0
+
+tar_read call start--------------------
+os Path len: /bigdir/perm1.c , size: 4096 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/perm1.cread ahead file: /bigdir/perm1.c, already sent; 8192 bytes, asked: 4096
+Match found path: /bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096, offset: 0
+
+tar_read call start--------------------
+os Path len: /bigdir/perm2.c , size: 4096 compare: -1
+Match 1 found path: bigdir/perm2.c at block:11, tar block: 6144 , size 588, asked: 4096, offset: 0, fh: 11 
+tar_read ended ------------------
+
+tar_read call start--------------------
+os Path len: /bigdir/perm2.c , size: 4096 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/perm2.cread ahead file: /bigdir/perm2.c, already sent; 4096 bytes, asked: 4096
+Match found path: /bigdir/perm2.c at block:11, tar block: 6144 , size 588, asked: 4096, offset: 0
+
+tar_read call start--------------------
+os Path len: /bigdir/perm2.c , size: 4096 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/perm2.cread ahead file: /bigdir/perm2.c, already sent; 8192 bytes, asked: 4096
+Match found path: /bigdir/perm2.c at block:11, tar block: 6144 , size 588, asked: 4096, offset: 0
+
+tar_read call start--------------------
+os Path len: /bigdir/perm1.c , size: 4096 compare: 1
+Match 1 found path: bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096, offset: 0, fh: 14 
+tar_read ended ------------------
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 14
+Match 1 found path: bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 0, fh: 71 
+tar_read ended ------------------
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 262144 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 262144
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 524288 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 524288
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 786432 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 786432
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1048576 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1048576
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1310720 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1310720
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1572864 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1572864
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 1835008 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1835008
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2097152 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2097152
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2359296 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2359296
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2621440 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2621440
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 2883584 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2883584
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3145728 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3145728
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3407872 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3407872
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3670016 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3670016
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 3932160 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3932160
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4194304 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4194304
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4456448 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4456448
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4718592 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4718592
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 4980736 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4980736
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 5242880 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 5242880
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 86016 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 5505024 bytes, asked: 86016
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 86016, offset: 5505024
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 5591040 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 0
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 5853184 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 262144
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 6115328 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 524288
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 6377472 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 786432
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 6639616 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1048576
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 6901760 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1310720
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 7163904 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1572864
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 7426048 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 1835008
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 7688192 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2097152
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 7950336 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2359296
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 8212480 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2621440
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 8474624 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 2883584
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 8736768 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3145728
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 8998912 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3407872
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 9261056 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3670016
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 9523200 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 3932160
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 9785344 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4194304
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 10047488 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4456448
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 10309632 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4718592
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 10571776 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 4980736
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 262144 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 10833920 bytes, asked: 262144
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 5242880
+
+tar_read call start--------------------
+os Path len: /bigdir/bill/shakespeare.txt , size: 86016 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/bill/shakespeare.txtread ahead file: /bigdir/bill/shakespeare.txt, already sent; 11096064 bytes, asked: 86016
+Match found path: /bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 86016, offset: 5505024
+
+tar_read call start--------------------
+os Path len: /bigdir/perm3.c , size: 4096 compare: -14
+Match 1 found path: bigdir/perm3.c at block:1, tar block: 1024 , size 709, asked: 4096, offset: 0, fh: 1 
+tar_read ended ------------------
+
+tar_read call start--------------------
+os Path len: /bigdir/perm2.c , size: 4096 compare: 1
+Match 1 found path: bigdir/perm2.c at block:11, tar block: 6144 , size 588, asked: 4096, offset: 0, fh: 11 
+tar_read ended ------------------
+
+tar_read call start--------------------
+os Path len: /bigdir/perm2.c , size: 4096 compare: 0
+
+2nd call to tar_read ----- 
+OS path: /bigdir/perm2.cread ahead file: /bigdir/perm2.c, already sent; 4096 bytes, asked: 4096
+Match found path: /bigdir/perm2.c at block:11, tar block: 6144 , size 588, asked: 4096, offset: 0
+
+tar_read call start--------------------
+os Path len: /bigdir/perm1.c , size: 4096 compare: 1
+Match 1 found path: bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096, offset: 0, fh: 14 
+tar_read ended ------------------

@@ -76,8 +76,10 @@ typedef struct Dir_list {
 List * head;
 
 typedef struct open_files{
+    char fname[255];
+    int block;
+    mode_t mode;
     int size;
-    int left;
     int sent;
     int open_flg;
 
@@ -100,7 +102,7 @@ void absolutepath(char * root_folder);
 //return tree struct
 
 typedef struct directory {  //unused
-    char path [150];
+    char path [255];
     int block_ind;
     struct directory * next;
 } tr_blk1; 

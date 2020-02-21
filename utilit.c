@@ -57,6 +57,9 @@ int isZero(posix_header * hdr){
        if (strcmp(os_path, tmp) == 0){
            return 2;
        }
+       //IF lst_path: /test/subdir/test
+       //    os_path: /test/dir/
+       //this matches /test/
        for (int i = 0; i < os_pathlen; i++){   //compare matchd char 
            if (tmp[i] == os_path[i] )
              match++;
@@ -175,7 +178,7 @@ int get_blk_count(int fd  ){
         if (skip == 0)
             count++;
         if (skip > 1)
-            count +=  ((int) ceilf((float) (size /(float) BLOCK_SIZE)) + 1) ;
+            count +=  ((int) ceilf((float) (size /(float) BLOCK_SIZE))) + 1 ;
         
         //printf("Testing !!!!! %s\n", head -> path);
 
@@ -218,7 +221,8 @@ List * path2blocknum(char  * req){
             curr = curr -> next;
         }
     }
-    perror("Path Not found in Tar File - path2blocknum\n");
+    return NULL;
+    //perror("Path Not found in Tar File - path2blocknum\n");
 }
 //This function writes into global variable = (cwd + root_folder)
 void absolutepath(char * root_folder){

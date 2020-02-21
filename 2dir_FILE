@@ -1,0 +1,16 @@
+tar_read call start--------------------
+os Path: /bigdir/bill/shakespeare.txt, size: 262144 
+Match 1 found path: bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 0
+ has not turn'd his colour, and has tears in's
+    eyes. Prithee no more!
+  Ham. 'Tis well. I'll have thee speak out the rest of this soon.-
+    Good my lord, will you see the players well bestow'd? Do you
+    hear? Let them tar_read call start--------------------
+os Path: /bigdir/bill/shakespeare.txt, size: 262144 
+Match 1 found path: bigdir/bill/shakespeare.txt at block:71, tar block: 36864 , size 5589887, asked: 262144, offset: 0
+    eyes. Prithee no more!
+  Ham. 'Tis well. I'll have thee speak out the rest of this soon.-
+    Good my lord, will you see the players well bestow'd? Do you
+    hear? Let them be well us'd; for they are the abstract and brietar_read call start--------------------
+os Path: /bigdir/perm1.c, size: 4096 
+Match 1 found path: bigdir/perm1.c at block:14, tar block: 7680 , size 1305, asked: 4096, offset: 0
