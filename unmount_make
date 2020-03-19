@@ -1,4 +1,13 @@
 #!/bin/bash
+
+if [ -d  "./mountdir" ] 
+then
+    echo "Mount dir Exists !!!!!!!"
+else
+    echo "Creating ./mountdir folder"
+    mkdir mountdir
+fi
+
 fusermount -u mountdir 
 #ps -x
 make
