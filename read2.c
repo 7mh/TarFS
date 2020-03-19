@@ -403,15 +403,20 @@ int main(int argc, char * argv[]){
     //char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/2readtar/x.tar";
     
     char * dflt_file = "/u1/h3/hashmi/classes/os2Cs671/copyreadtar/2readtar/bigdir.tar";
+    
+    if (argv[1] != NULL){
+        dflt_file = strdup(argv[1]);
+    }
+
     strcpy(tar_path, dflt_file);
     char * dflt_mount = "mountdir";
-    printf("USAGE > ./a.out [mountdir]\n"); 
+    printf("USAGE > ./a.out [tarFile]\n"); 
 
     hdr = (struct posix_header *)malloc(sizeof(*hdr));
     tab1 = (struct open_files *) malloc(sizeof(* tab1));
 
-    ;//open tar file
-    if (argc < 2){
+    //open tar file
+    if (argc <= 2){
         fd_tar = open(dflt_file, O_RDWR );
         //absolutepath(dflt_mount);
         bb_data -> rootdir = dflt_file;
