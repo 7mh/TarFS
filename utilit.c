@@ -211,7 +211,7 @@ int get_blk_count(int fd  ){
 // for directory respective block is returned 
 // But for files the Next block is returned Since File name and contents are
 // stored in separate blocks
-List * path2blocknum(char  * req){
+List * path2blocknum(const char  * req){
     List * curr = head;
     while(curr){
         if (strcmp(req, curr -> path) == 0 ){

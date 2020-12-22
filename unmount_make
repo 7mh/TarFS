@@ -8,6 +8,9 @@ else
     mkdir mountdir
 fi
 
+# to unmount "mountdir" if previously mounted
 fusermount -u mountdir 
 #ps -x
+
+
 make

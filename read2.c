@@ -12,13 +12,13 @@
 ///////////////////////////////////   defs  for bbfs
 
 //#include "log.h"
-#include "config.h"
+//#include "config.h"
 //////////////////////////////////
 
 
 #define handle_error(msg)\
     do {perror(msg); /*exit(EXIT_FAILURE);*/} while(0)
-#define PATH_MAX 255
+//#define PATH_MAX 255
 
 /////////////////////////////////////////////////////////////////
  
@@ -75,7 +75,7 @@ static int tar_getattr(const char *path, struct stat *stbuf,
       //END
       //searching path into linked list and filling struct stat from Llist
       List * tmp;
-      char * tst = path;
+      const char * tst = path;
       //strcpy(,)
       printf("Searching Llist path: %s \n", (tst+1));
       tmp = path2blocknum(tst+1);

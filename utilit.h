@@ -117,7 +117,7 @@ int get_blk_count(int fd );
 int count_extra_slash(char * os_path, char * lst_path, int flg);
 int isZero(posix_header * hdr);
 
-List * path2blocknum(char  * req);
+List * path2blocknum(const char  * req);
 List * createL(char * path, int blockno, int type, mode_t mode, off_t size,
                   long int mtime,  List * head  );
 #endif
