@@ -6,7 +6,7 @@ Libfuse 3 must be installed
 
 
 ## HOW TO MOUNT
-1.  run ./unmount_make <br/> 
+1.  run `./unmount_make` <br/> 
     This will create dir called "./mountdir" if not already there and run  Makefile.
 
 2.  run ./MOUNT_TAR [NAME OF TAR FILE]  <br/>
